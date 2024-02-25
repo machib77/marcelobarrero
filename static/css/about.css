@@ -1,0 +1,27 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.grid-item {
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.grid-item:nth-child(odd) {
+  text-align: left;
+}
+
+.grid-item:nth-child(even) {
+  text-align: right;
+}
+
+.bullet-list ul,
+.grid-container h2,
+.grid-container p {
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}

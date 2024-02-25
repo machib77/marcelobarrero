@@ -1,0 +1,205 @@
+{% extends "_base.html" %}
+<!-- Static -->
+{% load static %}
+<!-- Extra CSS -->
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/about.css' %}" />
+{% endblock extra_css %}
+<!-- Título -->
+{% block title %}About{% endblock title %}
+<!-- Contenido -->
+{% block content %}
+<h1>About Me</h1>
+
+<div>
+  <h1>Professional Experience</h1>
+
+  <div class="grid-container">
+    <div class="grid-item">
+      <h2>
+        EuroAmerica Corredores de Bolsa S.A.<br /><em>Investment Advisor</em>
+      </h2>
+    </div>
+    <div class="grid-item">
+      <p>
+        <em>Santiago, Chile<br />May 2015 – Nov 2023</em>
+      </p>
+    </div>
+  </div>
+  <div class="bullet-list">
+    <ul>
+      <li>
+        Executed critical swaps operations with precision, handling complex
+        calculations within tight deadlines.
+      </li>
+      <li>
+        Designed automated programs to track mark-to-market and gains/losses of
+        the company's Derivatives portfolio, alongside tracking sensitivities to
+        interest rate and foreign exchange rate risks.
+      </li>
+    </ul>
+  </div>
+  <br />
+
+  <div class="grid-container">
+    <div class="grid-item">
+      <h2>EuroAmerica Corredores de Bolsa S.A.</h2>
+      <h2><em>Derivatives Trader</em></h2>
+    </div>
+    <div class="grid-item">
+      <p>
+        <em>Santiago, Chile<br />Mar 2012 – Apr 2015</em>
+      </p>
+      <p><em></em></p>
+    </div>
+  </div>
+  <div class="bullet-list">
+    <ul>
+      <li>
+        Conducted quantitative analysis to support decision-making in new
+        investments.
+      </li>
+      <li>Automated financial reports using web-scraping techniques.</li>
+    </ul>
+  </div>
+  <br />
+
+  <div class="grid-container">
+    <div class="grid-item">
+      <h2>EuroAmerica Seguros de Vida S.A.</h2>
+      <h2><em>Equity Research Analyst</em></h2>
+    </div>
+    <div class="grid-item">
+      <p>
+        <em>Santiago, Chile<br />Jul 2010 – Feb 2012</em>
+      </p>
+      <p><em></em></p>
+    </div>
+  </div>
+  <div class="bullet-list">
+    <ul>
+      <li>
+        Produced investment recommendation reports and strategic insight
+        dashboards.
+      </li>
+    </ul>
+  </div>
+  <br />
+
+  <h1>Education</h1>
+
+  <div class="grid-container">
+    <div class="grid-item">
+      <h2>Universidad de Chile<br /><em>MSc in Finance</em></h2>
+    </div>
+    <div class="grid-item">
+      <p>
+        <em>Santiago, Chile<br />Feb 2009 – Jun 2010</em>
+      </p>
+    </div>
+  </div>
+  <div class="bullet-list">
+    <ul>
+      <li>
+        Thesis: "Stock Market Reaction to a Catastrophic Shock: Evidence from
+        the Chilean Market", awarded as "Best Thesis" during the XXVI National
+        Meeting of Administration and Economics Faculties.
+      </li>
+    </ul>
+  </div>
+  <br />
+
+  <div class="grid-container">
+    <div class="grid-item">
+      <h2>
+        Universidad Católica Boliviana<br /><em
+          >Bachelor in Business Engineering</em
+        >
+      </h2>
+    </div>
+    <div class="grid-item">
+      <p>
+        <em>La Paz, Bolivia<br />Feb 2002 – Apr 2008</em>
+      </p>
+    </div>
+  </div>
+  <br />
+
+  <div class="grid-container">
+    <div class="grid-item">
+      <h2>
+        Universidad Católica Boliviana<br /><em
+          >Diploma in Management and Managerial Development</em
+        >
+      </h2>
+    </div>
+    <div class="grid-item">
+      <p>
+        <em>La Paz, Bolivia<br />May 2008 – Mar 2009</em>
+      </p>
+    </div>
+  </div>
+  <br />
+
+  <h1>Skills</h1>
+
+  <div class="grid-container">
+    <div class="grid-item">
+      <h2>Data Scientist</h2>
+    </div>
+  </div>
+  <div class="bullet-list">
+    <ul>
+      <li>
+        Strong programming skills in Python, demonstrated by creating a
+        sophisticated framework for valuing derivative instrument portfolios.
+      </li>
+      <li>
+        Developed advanced Machine Learning models for trading, using TensorFlow
+        and scikit-learn libraries.
+      </li>
+      <li>
+        Built automated dashboards and reports using web-scraping techniques,
+        data processing, and visualization tools such as Power BI, Tableau, and
+        Streamlit.
+      </li>
+      <li>
+        Solid knowledge of SQL, PL-SQL, and ETL processes for efficient data
+        retrieval, manipulation, and transformation in database environments.
+      </li>
+    </ul>
+  </div>
+  <br />
+
+  <div class="grid-container">
+    <div class="grid-item">
+      <h2>Full Stack Web Developer</h2>
+    </div>
+  </div>
+  <div class="bullet-list">
+    <ul>
+      <li>
+        Proven experience in developing dynamic web applications using the
+        Django framework and containerizing applications with Docker.
+      </li>
+      <li>
+        Proficient in Git for efficient version control and collaborative
+        development on platforms like GitHub.
+      </li>
+    </ul>
+  </div>
+  <br />
+
+  <div class="grid-container">
+    <div class="grid-item">
+      <h2>Languages</h2>
+    </div>
+  </div>
+  <div class="bullet-list">
+    <ul>
+      <li>Advanced English and native Spanish.</li>
+    </ul>
+  </div>
+  <br />
+</div>
+{% endblock content %}
