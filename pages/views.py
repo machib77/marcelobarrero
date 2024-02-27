@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.views.generic.edit import FormView
@@ -39,5 +40,10 @@ class ContactView(FormView):
 
         # Save to database
         form.save()
+
+        # Success Message
+        messages.success(
+            self.request, "Your message has been sent!", extra_tags="success-fadeout"
+        )
 
         return super().form_valid(form)

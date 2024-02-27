@@ -6,3 +6,35 @@ h1 {
   height: 300px;
   width: auto;
 }
+
+.messages {
+  list-style: none;
+  padding: 10px;
+  margin: 0;
+}
+
+.success-fadeout {
+  background-color: #4caf50;
+  color: white;
+  animation: fadeOut 8s forwards;
+}
+
+@keyframes fadeOut {
+  /* 0%,
+  30% {
+    opacity: 1;
+  }
+
+  30%,
+  100% {
+    opacity: 0;
+  } */
+
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    display: none;
+  }
+}
