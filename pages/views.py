@@ -16,6 +16,10 @@ class AboutPageView(TemplateView):
     template_name = "pages/about.html"
 
 
+class PortfolioPageView(TemplateView):
+    template_name = "pages/portfolio.html"
+
+
 class ContactView(FormView):
     template_name = "pages/contact.html"
     form_class = ContactForm

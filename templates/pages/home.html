@@ -2,35 +2,37 @@
 <!-- Static -->
 {% load static %}
 <!-- Título -->
-{% block title %}Home{% endblock title %}
+{% block title %}
+  Home
+{% endblock title %}
 <!-- Contenido -->
 {% block content %}
-
-{% if messages %}
-<ul class="messages">
-  {% for message in messages %}
-    <li{% if message.tags %} class="{{ message.tags  }}"{% endif %}>{{ message }}</li>
-  {% endfor %}
-</ul>
-{% endif %} 
-
-<h1>I'm Marcelo Barrero</h1>
-<h2>Quant Trader</h2>
-<p>
-  A proactive, adaptable, and collaborative professional with over 14 years of
-  experience in the financial sector. Proven track record of success as a trader
-  and analyst, demonstrating exceptional analytical skills and a strategic
-  approach to decision-making.
-</p>
-
-<img class="profile-pic" src="{% static 'images/me.jpg' %}" alt="" />
-<br />
-<a class="button" href="{% static 'documents/CV.pdf' %}" download>
-  Download CV
-</a>
-
-<!-- JavaScript -->
-<script src="{% static 'js/messageSuccess.js' %}"></script>
-
-<!-- end -->
+  <br>
+  <br>
+  <br>
+  {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+        <li {% if message.tags %}class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+  <h1>I'm Marcelo Barrero</h1>
+  <h2>Quant Trader</h2>
+  <p>
+    A proactive, adaptable, and collaborative professional with over 14 years of
+    experience in the financial sector. Proven track record of success as a trader
+    and analyst, demonstrating exceptional analytical skills and a strategic
+    approach to decision-making.
+  </p>
+  <img class="profile-pic"
+       src="{% static 'images/me.jpg' %}"
+       alt=""
+       width="300"
+       height="auto" />
+  <br />
+  <a class="button" href="{% static 'documents/CV.pdf' %}" download>Download CV</a>
+  <!-- JavaScript -->
+  <script src="{% static 'js/messageSuccess.js' %}"></script>
+  <!-- end -->
 {% endblock content %}
