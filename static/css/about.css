@@ -1,3 +1,9 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 .grid-container {
   display: grid;
   grid-template-columns: auto auto;
@@ -24,4 +30,14 @@
 .grid-container p {
   margin-top: 0.1em;
   margin-bottom: 0.1em;
+}
+
+.container {
+  max-width: 800px; /* Adjust as needed */
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.bullet-list ul {
+  display: none;
 }

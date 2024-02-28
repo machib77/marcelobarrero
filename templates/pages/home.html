@@ -14,21 +14,31 @@
       {% endfor %}
     </ul>
   {% endif %}
-  <h1 id="cool-name">MARCELO BARRERO</h1>
-  <h2>Quant Trader</h2>
-  <p>
-    A proactive, adaptable, and collaborative professional with over 14 years of
-    experience in the financial sector. Proven track record of success as a trader
-    and analyst, demonstrating exceptional analytical skills and a strategic
-    approach to decision-making.
-  </p>
-  <img class="profile-pic"
-       src="{% static 'images/me.jpg' %}"
-       alt=""
-       width="300"
-       height="auto" />
-  <br />
-  <a class="button" href="{% static 'documents/CV.pdf' %}" download>Download CV</a>
+  <div class="home-container">
+    <br>
+    <img id="profile-pic"
+         src="{% static 'images/me.jpg' %}"
+         alt=""
+         width="300"
+         height="auto" />
+    <br>
+    <br>
+    <h1 id="cool-name">MARCELO BARRERO</h1>
+    <h2>Quant Trader</h2>
+    <p>
+      A proactive, adaptable, and collaborative professional with over 14 years of
+      experience in the financial sector.
+      <br>
+      Proven track record of success as a trader
+      and analyst, demonstrating exceptional analytical skills and a strategic
+      approach to decision-making.
+    </p>
+    <br />
+    <br>
+    <button>
+      <a href="{% static 'documents/CV.pdf' %}" download>Download CV</a>
+    </button>
+  </div>
   <!-- JavaScript -->
   <script src="{% static 'js/messageSuccess.js' %}"></script>
   <!-- end -->
