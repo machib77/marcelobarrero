@@ -22,15 +22,20 @@
           rel="stylesheet"
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
           crossorigin="anonymous" />
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap"
+          rel="stylesheet">
   </head>
   <body>
     <header>
       <nav>
         <div class="tabs-container">
-          <a class="nav-tab" href="{% url "home" %}">Home</a>
-          <a class="nav-tab" href="{% url "about" %}">About</a>
-          <a class="nav-tab" href="{% url "portfolio" %}">Portfolio</a>
-          <a class="nav-tab" href="{% url "contact" %}">Contact</a>
+          <a id="tab-home" class="nav-tab" href="{% url "home" %}">Home</a>
+          <a id="tab-about"class="nav-tab" href="{% url "about" %}">About</a>
+          <a id="tab-portfolio" class="nav-tab" href="{% url "portfolio" %}">Portfolio</a>
+          <a id="tab-contact" class="nav-tab" href="{% url "contact" %}">Contact</a>
           <span class="tab-slider"></span>
         </div>
       </nav>
@@ -39,6 +44,8 @@
       {% block content %}
       {% endblock content %}
     </main>
+    <!-- JavaScript -->
+    <script src="{% static 'js/tab.js' %}"></script>
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"

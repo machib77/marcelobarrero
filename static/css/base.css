@@ -20,16 +20,6 @@ a {
 }
 
 @keyframes fadeOut {
-  /* 0%,
-  30% {
-    opacity: 1;
-  }
-
-  30%,
-  100% {
-    opacity: 0;
-  } */
-
   from {
     opacity: 1;
   }
@@ -52,6 +42,7 @@ a {
 }
 
 .nav-tab {
+  font-family: 'Marcellus';
   text-decoration: none;
   display: flex;
   justify-content: center;
@@ -61,9 +52,50 @@ a {
   letter-spacing: 0.1rem;
   transition: all 0.5 ease;
   font-size: 0.8rem;
-  &:hover {
-    color: white;
-    background: rgba(102, 177, 241, 0.8);
-    transition: all 0.5s ease;
-  }
+}
+
+.nav-tab:hover {
+  color: white;
+  background: rgba(102, 177, 241, 0.8);
+}
+
+.nav-tab.active {
+  color: white;
+  background: rgba(102, 177, 241, 0.8);
+}
+
+.tab-slider {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 6px;
+  background: #66b1f1;
+  transition: width 0.3s ease, left 0.3s ease;
+}
+
+main {
+  padding-top: 70px;
+  font-family: 'Marcellus';
+}
+
+@font-face {
+  font-family: 'Brolia Regular';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Brolia Regular'), url('Brolia.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'EleganzaPlain';
+  src: local('EleganzaPlain'),
+    url('/static/fonts/EleganzaPlain.otf') format('truetype');
+}
+
+.marcellus-regular {
+  font-family: 'Marcellus', serif;
+  font-weight: 400;
+  font-style: normal;
+}
+#cool-name {
+  font-family: 'Marcellus', serif;
 }
