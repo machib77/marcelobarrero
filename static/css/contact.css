@@ -1,0 +1,20 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+h2 {
+  font-size: 1.2em;
+}
+
+.container {
+  max-width: 600px !important;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.contact-title {
+  padding: 1em;
+  text-align: center;
+}

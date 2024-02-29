@@ -5,7 +5,7 @@
 }
 
 h2 {
-  font-size: 1.2em;
+  font-size: 1.2em !important;
 }
 
 li {
@@ -41,7 +41,7 @@ li {
 }
 
 .container {
-  max-width: 600px; /* Adjust as needed */
+  max-width: 600px !important; /* Adjust as needed */
   margin: 0 auto;
   padding: 20px;
 }
@@ -54,13 +54,14 @@ li {
 .title-container {
   padding: 0;
   margin-top: 1em;
-  margin-bottom: 1em;
+  margin-bottom: 0.5em;
   position: relative;
 }
 
 .top-title {
-  padding: 1em;
+  padding: 0;
   text-align: center;
+  margin-top: 1em;
 }
 
 /* .grid-container:hover {
