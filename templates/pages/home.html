@@ -1,6 +1,10 @@
 {% extends "_base.html" %}
 <!-- Static -->
 {% load static %}
+<!-- Extra CSS -->
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'css/home.css' %}" />
+{% endblock extra_css %}
 <!-- Título -->
 {% block title %}
   Home
@@ -29,11 +33,11 @@
       A proactive, adaptable, and collaborative professional with over 14 years of
       experience in the financial sector.
       <br>
+      <br>
       Proven track record of success as a trader
       and analyst, demonstrating exceptional analytical skills and a strategic
       approach to decision-making.
     </p>
-    <br />
     <br>
     <button>
       <a href="{% static 'documents/CV.pdf' %}" download>Download CV</a>

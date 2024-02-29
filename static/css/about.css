@@ -55,6 +55,7 @@ li {
   padding: 0;
   margin-top: 1em;
   margin-bottom: 1em;
+  position: relative;
 }
 
 .top-title {
@@ -65,3 +66,36 @@ li {
 /* .grid-container:hover {
   background-color: rgba(102, 177, 241, 0.8);
 } */
+
+.svg-title {
+  position: absolute;
+  left: -3em; /* Adjust as needed */
+  top: 56%;
+  transform: translateY(-50%);
+}
+
+#briefcase {
+  width: 1.7em;
+  height: 1.7em;
+  color: #684d24;
+}
+
+#mortorboard {
+  width: 2.1em;
+  height: 2.1em;
+  color: #335b96;
+}
+
+#education-container {
+  left: -3.5em;
+}
+
+#cpu {
+  width: 1.9em;
+  height: 1.9em;
+  color: #cee116;
+}
+
+#skills-container {
+  left: -3.3em;
+}
