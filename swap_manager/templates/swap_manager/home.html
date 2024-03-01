@@ -1,9 +1,26 @@
 {% extends "_sm_base.html" %}
 {% load static %}
+<!-- Extra CSS -->
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/sm_home.css' %}" />
+{% endblock extra_css %}
 {% block title %}
     Swap Manager - Home
 {% endblock title %}
 {% block content %}
-    <h1>Swap Manager Home</h1>
-    <img src="{% static "images/bob.jpg" %}" alt="" width="300" height="auto">
+    <div class="top-title">
+        <h1>Swap Manager Home</h1>
+    </div>
+    <div class="curve-container">
+        <div id="spot-rates-container">
+            <form id="spot-rates-form">
+                {% csrf_token %}
+                {% for tenor in tenors %}
+                    <label for="{{ tenor }}">{{ tenor }}</label>
+                    <input type="number" step="0.01" name="{{ tenor }}" id="{{ tenor }}">
+                    <br>
+                {% endfor %}
+            </form>
+        </div>
+    </div>
 {% endblock content %}

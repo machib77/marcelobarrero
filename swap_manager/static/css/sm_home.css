@@ -1,0 +1,9 @@
+#spot-rates-form label {
+  display: inline-block;
+  width: 2em;
+  margin-bottom: 0.5em;
+}
+
+#spot-rates-form input {
+  width: 4em;
+}
