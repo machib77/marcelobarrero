@@ -3,6 +3,8 @@
 <!-- Extra CSS -->
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'css/sm_home.css' %}" />
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://unpkg.com/htmx.org/dist/htmx.js"></script>
 {% endblock extra_css %}
 {% block title %}
     Swap Manager - Home
@@ -17,11 +19,20 @@
                 {% csrf_token %}
                 {% for tenor in tenors.keys %}
                     <label for="{{ tenor }}">{{ tenor }}</label>
-                    <input type="number" step="0.01" name="{{ tenor }}" id="{{ tenor }}">
+                    <input type="number"
+                           step="0.01"
+                           name="{{ tenor }}"
+                           id="{{ tenor }}"
+                           hx-post="{% url 'generate_chart' %}"
+                           hx-trigger="change"
+                           hx-target="#chart-container">
                     <br>
                 {% endfor %}
             </form>
         </div>
+    </div>
+    <div>
+        <div id="chart-container"></div>
     </div>
     <!-- Asigno tenors_json a una variable JavaScript -->
     <script>const tenorsJson = {{ tenors_json|safe }};</script>
