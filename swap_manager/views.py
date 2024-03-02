@@ -7,6 +7,7 @@ from django.http import HttpResponse
 from django.views import View
 import plotly.graph_objs as go
 
+
 # Creo un diccionario con los defaults.
 curve_defaults = {
     "1D": 5.31,
@@ -55,17 +56,20 @@ class HomePageView(TemplateView):
 
 
 class ChartGeneratorView(View):
+    rate_dict = {}
+
     def post(self, request):
-        rate_dict = {}
+
+        self.rate_dict = {}
 
         for tenor in curve_defaults.keys():
-            rate_dict[tenor] = float(request.POST.get(tenor, 0))
+            self.rate_dict[tenor] = float(request.POST.get(tenor, 0))
 
-        # Genero el gráfico plotly
+        # Genero el gráfico plotly de las TASAS SPOT
         data = [
             go.Scatter(
-                x=list(rate_dict.keys()),
-                y=list(rate_dict.values()),
+                x=list(self.rate_dict.keys()),
+                y=list(self.rate_dict.values()),
                 mode="lines+markers",
             )
         ]
@@ -76,3 +80,21 @@ class ChartGeneratorView(View):
         chart = fig.to_html(full_html=False, include_plotlyjs=False)
 
         return HttpResponse(chart)
+
+
+class DiscountChartView(View):
+    def post(self, request):
+        data = [
+            go.Scatter(
+                x=["1Y", "2Y", "3Y", "4Y"],
+                y=[2, 4, 7, 9],
+                mode="lines+markers",
+            )
+        ]
+
+        layout = go.Layout()
+        fig = go.Figure(data=data, layout=layout)
+
+        disc_chart = fig.to_html(full_html=False, include_plotlyjs=False)
+
+        return HttpResponse(disc_chart)

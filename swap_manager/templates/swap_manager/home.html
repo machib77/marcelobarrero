@@ -34,8 +34,22 @@
     <div>
         <div id="chart-container"></div>
     </div>
+    <div>
+        <form id="trigger-form">
+            {% csrf_token %}
+            <input type="number"
+                   name="discount-trigger"
+                   id="discount-trigger"
+                   hx-post="{% url "discount_chart" %}"
+                   hx-trigger="change"
+                   hx-target="#discount-container">
+        </form>
+        <div id="discount-container"></div>
+    </div>
     <!-- Asigno tenors_json a una variable JavaScript -->
     <script>const tenorsJson = {{ tenors_json|safe }};</script>
     <!-- JavaScript for initial rates -->
     <script src="{% static "js/initialRates.js" %}"></script>
+    <!-- JavaScript to trigger the discount chart-->
+    <script src="{% static "js/triggerDiscount.js" %}"></script>
 {% endblock content %}
