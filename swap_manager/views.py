@@ -5,41 +5,17 @@ import json
 
 from django.http import HttpResponse
 from django.views import View
-import plotly.graph_objs as go
+
+# Import the Django session
+from django.contrib.sessions.models import Session
+from django.contrib.sessions.backends.db import SessionStore
+
+from .python_scripts import discount_usd_sofr
+from .python_scripts.plotly_charts import scatter_plot
 
 
-# Creo un diccionario con los defaults.
-curve_defaults = {
-    "1D": 5.31,
-    "1W": 5.3225,
-    "2W": 5.3270,
-    "3W": 5.3367,
-    "1M": 5.3475,
-    "2M": 5.3639,
-    "3M": 5.3770,
-    "4M": 5.3796,
-    "5M": 5.3707,
-    "6M": 5.3479,
-    "7M": 5.3168,
-    "8M": 5.2880,
-    "9M": 5.2523,
-    "10M": 5.2153,
-    "11M": 5.1767,
-    "1Y": 5.1350,
-    "1.5Y": 4.7983,
-    "2Y": 4.5490,
-    "3Y": 4.2404,
-    "4Y": 4.0897,
-    "5Y": 4.0165,
-    "6Y": 3.9823,
-    "7Y": 3.9654,
-    "8Y": 3.9602,
-    "9Y": 3.9633,
-    "10Y": 3.9694,
-    "12Y": 3.9886,
-    "15Y": 4.0121,
-    "20Y": 3.9894,
-}
+# Llamo a mi diccionario con los defaults.
+curve_defaults = discount_usd_sofr.curve_defaults
 
 
 class HomePageView(TemplateView):
@@ -56,45 +32,28 @@ class HomePageView(TemplateView):
 
 
 class ChartGeneratorView(View):
-    rate_dict = {}
 
     def post(self, request):
 
-        self.rate_dict = {}
+        rate_dict = {}
 
         for tenor in curve_defaults.keys():
-            self.rate_dict[tenor] = float(request.POST.get(tenor, 0))
+            rate_dict[tenor] = float(request.POST.get(tenor, 0))
+
+        # Guardar rate_dict en session
+        request.session["rate_dict"] = rate_dict
 
         # Genero el gráfico plotly de las TASAS SPOT
-        data = [
-            go.Scatter(
-                x=list(self.rate_dict.keys()),
-                y=list(self.rate_dict.values()),
-                mode="lines+markers",
-            )
-        ]
-
-        layout = go.Layout()
-        fig = go.Figure(data=data, layout=layout)
-
-        chart = fig.to_html(full_html=False, include_plotlyjs=False)
+        chart = scatter_plot(list(rate_dict.keys()), list(rate_dict.values()))
 
         return HttpResponse(chart)
 
 
 class DiscountChartView(View):
     def post(self, request):
-        data = [
-            go.Scatter(
-                x=["1Y", "2Y", "3Y", "4Y"],
-                y=[2, 4, 7, 9],
-                mode="lines+markers",
-            )
-        ]
-
-        layout = go.Layout()
-        fig = go.Figure(data=data, layout=layout)
-
-        disc_chart = fig.to_html(full_html=False, include_plotlyjs=False)
+        # Recuperar rate_dict de sessions
+        rate_dict = request.session.get("rate_dict", {})
+        # print(rate_dict)
+        disc_chart = scatter_plot(["1Y", "2Y", "3Y", "4Y"], [2, 4, 7, 9])
 
         return HttpResponse(disc_chart)
