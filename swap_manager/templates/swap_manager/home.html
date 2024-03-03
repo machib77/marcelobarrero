@@ -52,6 +52,23 @@
             <button type="submit">Download Excel</button>
         </form>
     </div>
+    <div>
+        <form id="swap-inputs-form"
+              method="post"
+              action="{% url "generate_swap" %}">
+            {% csrf_token %}
+            <label for="notional">Notional</label>
+            <input type="number" name="notional" id="notional">
+            <br>
+            <label for="fix-rate">Fix rate</label>
+            <input type="number" name="fix-rate" id="fix-rate">
+            <br>
+            <label for="flow-years">Years</label>
+            <input type="number" name="flow-years" id="flow-years">
+            <br>
+            <button type="submit">Generate Swap</button>
+        </form>
+    </div>
     <!-- Asigno tenors_json a una variable JavaScript -->
     <script>const tenorsJson = {{ tenors_json|safe }};</script>
     <!-- JavaScript for initial rates -->

@@ -1,9 +1,9 @@
 import pandas as pd
 import numpy as np
-import scipy.interpolate
-import datetime
+from scipy.interpolate import interp1d
+
 from dateutil.relativedelta import relativedelta
-from datetime import timedelta
+from datetime import timedelta, date
 
 curve_defaults = {
     "1D": 5.31,
@@ -39,7 +39,7 @@ curve_defaults = {
 
 
 def discount_usd_sofr(rate_dict):
-    today = datetime.date.today()
+    today = date.today()
     today_str = today.strftime("%Y-%m-%d")
 
     # Creo un diccionario con las fechas de vencimiento de cada swap
@@ -82,8 +82,7 @@ def discount_usd_sofr(rate_dict):
     spot = {}
     for i in spot_date:
         spot[(i - today).days] = (
-            scipy.interpolate.interp1d(df["dtm"], df[df.columns[0]])((i - today).days)
-            * 1
+            interp1d(df["dtm"], df[df.columns[0]])((i - today).days) * 1
         )
 
     # Creo una lista para las fechas de inicio
@@ -111,9 +110,7 @@ def discount_usd_sofr(rate_dict):
     # Creo una lista del cupon para el cual ya tengo su factor de descuento calculado y agrego los fd a long_list
     short_list = long_end.index[:1].tolist()
     for i in short_list:
-        long_end.loc[i, "df"] = scipy.interpolate.interp1d(
-            short_end["dtm"], short_end["df"]
-        )(i)
+        long_end.loc[i, "df"] = interp1d(short_end["dtm"], short_end["df"])(i)
 
     # Creo una lista de los dias a los que todavía me falta calcular sus factores de descuento
     long_list = long_end.index[1:].tolist()

@@ -90,3 +90,13 @@ class DownloadDiscount(View):
         )
         response["Content-Disposition"] = 'attachment; filename="dataframe.xlsx"'
         return response
+
+
+class GenerateSwapView(View):
+    def post(self, request, *args, **kwargs):
+        notional = float(request.POST.get("notional", 0.0))
+        fix_rate = float(request.POST.get("fix-rate", 0.0))
+        flow_years = int(request.POST.get("flow-years", 0))
+
+        print(notional)
+        return HttpResponse("se genera el flujo")
