@@ -10,12 +10,12 @@ from django.views import View
 from django.contrib.sessions.models import Session
 from django.contrib.sessions.backends.db import SessionStore
 
-from .python_scripts import discount_usd_sofr
+from .python_scripts.usd_sofr import curve_defaults, discount_usd_sofr
 from .python_scripts.plotly_charts import scatter_plot
 
 
 # Llamo a mi diccionario con los defaults.
-curve_defaults = discount_usd_sofr.curve_defaults
+curve_defaults = curve_defaults
 
 
 class HomePageView(TemplateView):
@@ -53,7 +53,11 @@ class DiscountChartView(View):
     def post(self, request):
         # Recuperar rate_dict de sessions
         rate_dict = request.session.get("rate_dict", {})
-        # print(rate_dict)
-        disc_chart = scatter_plot(["1Y", "2Y", "3Y", "4Y"], [2, 4, 7, 9])
+
+        # Ejecuto la función que calcula los fd
+        df_usd = discount_usd_sofr(rate_dict)
+
+        # Genero el gráfico
+        disc_chart = scatter_plot(list(df_usd.date), list(df_usd.df))
 
         return HttpResponse(disc_chart)
