@@ -60,10 +60,9 @@ class DiscountChartView(View):
         df_usd = discount_usd_sofr(rate_dict)
 
         # Guardo el dataframe df_usd en session
-        df_usd_str = df_usd.copy()
+        df_usd_str = df_usd.copy().reset_index()
         df_usd_str["date"] = df_usd_str["date"].apply(lambda x: x.strftime("%Y-%m-%d"))
         df_usd_dict = df_usd_str.to_dict(orient="records")
-        # print(df_usd_dict)
         request.session["df_usd_dict"] = df_usd_dict
 
         # Genero el gráfico
@@ -76,8 +75,18 @@ class DownloadDiscount(View):
     def post(self, request):
         # Recupero el dataframe df_usd de sessions
         df_usd_dict = request.session.get("df_usd_dict", {})
-        df_usd_back = pd.DataFrame(df_usd_dict)
-        print(df_usd_back)
+        df_usd = pd.DataFrame(df_usd_dict)
 
-        # Return a simple HttpResponse
-        return HttpResponse("Data printed to console. Check your server logs.")
+        # Guardo el archivo excel como bytes  en memoria
+        excel_buffer = BytesIO()
+        excel_writer = pd.ExcelWriter(excel_buffer, engine="xlsxwriter")  # type:ignore
+        df_usd.to_excel(excel_writer, index=False)
+        excel_writer.close()
+
+        # Creo una respuesta con el archivo excel
+        response = HttpResponse(
+            excel_buffer.getvalue(),
+            content_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        )
+        response["Content-Disposition"] = 'attachment; filename="dataframe.xlsx"'
+        return response
