@@ -46,6 +46,12 @@
         </form>
         <div id="discount-container"></div>
     </div>
+    <div>
+        <form action="{% url "download_discount" %}" method="post">
+            {% csrf_token %}
+            <button type="submit">Download Excel</button>
+        </form>
+    </div>
     <!-- Asigno tenors_json a una variable JavaScript -->
     <script>const tenorsJson = {{ tenors_json|safe }};</script>
     <!-- JavaScript for initial rates -->

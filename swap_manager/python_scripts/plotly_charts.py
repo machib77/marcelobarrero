@@ -1,12 +1,12 @@
 import plotly.graph_objs as go
 
 
-def scatter_plot(x, y):
+def scatter_plot(x, y, mode="lines+markers"):
     data = [
         go.Scatter(
             x=x,
             y=y,
-            mode="lines+markers",
+            mode=mode,
         )
     ]
 

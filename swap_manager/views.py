@@ -13,6 +13,8 @@ from django.contrib.sessions.backends.db import SessionStore
 from .python_scripts.usd_sofr import curve_defaults, discount_usd_sofr
 from .python_scripts.plotly_charts import scatter_plot
 
+from io import BytesIO
+import pandas as pd
 
 # Llamo a mi diccionario con los defaults.
 curve_defaults = curve_defaults
@@ -57,7 +59,25 @@ class DiscountChartView(View):
         # Ejecuto la función que calcula los fd
         df_usd = discount_usd_sofr(rate_dict)
 
+        # Guardo el dataframe df_usd en session
+        df_usd_str = df_usd.copy()
+        df_usd_str["date"] = df_usd_str["date"].apply(lambda x: x.strftime("%Y-%m-%d"))
+        df_usd_dict = df_usd_str.to_dict(orient="records")
+        # print(df_usd_dict)
+        request.session["df_usd_dict"] = df_usd_dict
+
         # Genero el gráfico
         disc_chart = scatter_plot(list(df_usd.date), list(df_usd.df))
 
         return HttpResponse(disc_chart)
+
+
+class DownloadDiscount(View):
+    def post(self, request):
+        # Recupero el dataframe df_usd de sessions
+        df_usd_dict = request.session.get("df_usd_dict", {})
+        df_usd_back = pd.DataFrame(df_usd_dict)
+        print(df_usd_back)
+
+        # Return a simple HttpResponse
+        return HttpResponse("Data printed to console. Check your server logs.")
