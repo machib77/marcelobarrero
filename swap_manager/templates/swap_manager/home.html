@@ -17,12 +17,12 @@
         <div id="spot-rates-container">
             <form id="spot-rates-form">
                 {% csrf_token %}
-                {% for tenor in tenors.keys %}
-                    <label for="{{ tenor }}">{{ tenor }}</label>
+                {% for curve_default in curve_defaults.keys %}
+                    <label for="{{ curve_default }}">{{ curve_default }}</label>
                     <input type="number"
                            step="0.01"
-                           name="{{ tenor }}"
-                           id="{{ tenor }}"
+                           name="{{ curve_default }}"
+                           id="{{ curve_default }}"
                            hx-post="{% url 'generate_chart' %}"
                            hx-trigger="change"
                            hx-target="#chart-container">
@@ -55,28 +55,23 @@
     <div>
         <form id="swap-inputs-form">
             {% csrf_token %}
-            <label for="notional">Notional</label>
-            <input type="number" name="notional" id="notional">
-            <br>
-            <label for="fix-rate">Fix rate</label>
-            <input type="number" name="fix-rate" id="fix-rate">
-            <br>
-            <label for="flow-years">Years</label>
-            <input type="number" name="flow-years" id="flow-years">
-            <br>
-            <button type="submit"
-                    hx-post="{% url "generate_swap" %}"
-                    hx-trigger="click"
-                    hx-target="#fix-leg-container">Generate Swap</button>
+            {% for swap_default in swap_defaults %}
+                <label for="{{ swap_default }}">{{ swap_default }}</label>
+                <input type="number" name="{{ swap_default }}" id="{{ swap_default }}">
+                <br>
+            {% endfor %}
         </form>
     </div>
     <div>
         <div id="fix-leg-container"></div>
     </div>
     <!-- Asigno tenors_json a una variable JavaScript -->
-    <script>const tenorsJson = {{ tenors_json|safe }};</script>
+    <script>
+        const curveDefaultsJson = {{ curve_defaults_json|safe }};
+        const swapDefaultsJson = {{ swap_defaults_json|safe }};
+    </script>
     <!-- JavaScript for initial rates -->
-    <script src="{% static "js/initialRates.js" %}"></script>
+    <script src="{% static "js/initialConditions.js" %}"></script>
     <!-- JavaScript to trigger the discount chart-->
     <script src="{% static "js/triggerDiscount.js" %}"></script>
 {% endblock content %}

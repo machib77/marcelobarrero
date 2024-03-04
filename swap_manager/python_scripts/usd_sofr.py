@@ -37,6 +37,12 @@ curve_defaults = {
     "20Y": 3.9894,
 }
 
+swap_defaults = {
+    "notional": 10000000,
+    "fix-rate": 4.0165,
+    "flow-years": 5,
+}
+
 
 def discount_usd_sofr(rate_dict):
     today = date.today()

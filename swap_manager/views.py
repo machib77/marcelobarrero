@@ -10,7 +10,7 @@ from django.views import View
 from django.contrib.sessions.models import Session
 from django.contrib.sessions.backends.db import SessionStore
 
-from .python_scripts.usd_sofr import curve_defaults, discount_usd_sofr
+from .python_scripts.usd_sofr import curve_defaults, swap_defaults, discount_usd_sofr
 from .python_scripts.plotly_charts import scatter_plot
 
 from io import BytesIO
@@ -20,6 +20,7 @@ from .python_scripts.swap_valuation import fix_leg_valuation
 
 # Llamo a mi diccionario con los defaults.
 curve_defaults = curve_defaults
+swap_defaults = swap_defaults
 
 
 class HomePageView(TemplateView):
@@ -28,9 +29,11 @@ class HomePageView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         # Puse unos valores por default para que la curva se cargue desde que se abre
-        context["tenors"] = curve_defaults
+        context["curve_defaults"] = curve_defaults
+        context["swap_defaults"] = swap_defaults
 
-        context["tenors_json"] = json.dumps(context["tenors"])
+        context["curve_defaults_json"] = json.dumps(context["curve_defaults"])
+        context["swap_defaults_json"] = json.dumps(context["swap_defaults"])
 
         return context
 
