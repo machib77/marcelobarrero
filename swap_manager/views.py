@@ -16,6 +16,8 @@ from .python_scripts.plotly_charts import scatter_plot
 from io import BytesIO
 import pandas as pd
 
+from .python_scripts.swap_valuation import fix_leg_valuation
+
 # Llamo a mi diccionario con los defaults.
 curve_defaults = curve_defaults
 
@@ -98,5 +100,6 @@ class GenerateSwapView(View):
         fix_rate = float(request.POST.get("fix-rate", 0.0))
         flow_years = int(request.POST.get("flow-years", 0))
 
-        print(notional)
-        return HttpResponse("se genera el flujo")
+        df = fix_leg_valuation(notional, fix_rate / 10000, flow_years)
+        df_html = df.to_html()
+        return HttpResponse(df_html)
