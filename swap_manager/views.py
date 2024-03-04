@@ -99,9 +99,18 @@ class DownloadDiscount(View):
 
 class GenerateSwapView(View):
     def post(self, request, *args, **kwargs):
-        notional = float(request.POST.get("notional", 0.0))
-        fix_rate = float(request.POST.get("fix-rate", 0.0))
-        flow_years = int(request.POST.get("flow-years", 0))
+
+        swap_inputs = {}
+        for swap_default in swap_defaults.keys():
+            swap_inputs[swap_default] = float(request.POST.get(swap_default, 0))
+
+        notional = swap_inputs["notional"]
+        fix_rate = swap_inputs["fix-rate"]
+        flow_years = int(swap_inputs["flow-years"])
+
+        # notional = float(request.POST.get("notional", 0.0))
+        # fix_rate = float(request.POST.get("fix-rate", 0.0))
+        # flow_years = int(request.POST.get("flow-years", 0))
 
         df = fix_leg_valuation(notional, fix_rate / 10000, flow_years)
         df_html = df.to_html()

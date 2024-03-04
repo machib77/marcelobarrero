@@ -57,7 +57,12 @@
             {% csrf_token %}
             {% for swap_default in swap_defaults %}
                 <label for="{{ swap_default }}">{{ swap_default }}</label>
-                <input type="number" name="{{ swap_default }}" id="{{ swap_default }}">
+                <input type="number"
+                       name="{{ swap_default }}"
+                       id="{{ swap_default }}"
+                       hx-post="{% url 'generate_swap' %}"
+                       hx-trigger="change"
+                       hx-target="#fix-leg-container">
                 <br>
             {% endfor %}
         </form>
