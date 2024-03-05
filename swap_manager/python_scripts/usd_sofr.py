@@ -54,16 +54,16 @@ def discount_usd_sofr(rate_dict):
         if key == "1D":
             end_date[key] = today + relativedelta(days=1)
         elif key == "1.5Y":
-            end_date[key] = today + relativedelta(months=18, days=2)
+            end_date[key] = today + relativedelta(months=18, days=0)
         elif "W" in key:
             weeks = int(key.strip("W"))
-            end_date[key] = today + relativedelta(weeks=weeks, days=2)
+            end_date[key] = today + relativedelta(weeks=weeks, days=0)
         elif "M" in key:
             months = int(key.strip("M"))
-            end_date[key] = today + relativedelta(months=months, days=2)
+            end_date[key] = today + relativedelta(months=months, days=0)
         elif "Y" in key:
             years = int(key.strip("Y"))
-            end_date[key] = today + relativedelta(years=years, days=2)
+            end_date[key] = today + relativedelta(years=years, days=0)
 
     # Creo un diccionario con los Days to Maturity
     days_to_mat = {}
@@ -84,7 +84,7 @@ def discount_usd_sofr(rate_dict):
     # Para la parte larga, creo un diccinario anual que tiene de keys los dtm y de value su tasa spot interpolada correspondiente
     spot_date = []
     for i in range(20):
-        spot_date.append(today + relativedelta(months=((12 * i) + 12), days=2))
+        spot_date.append(today + relativedelta(months=((12 * i) + 12), days=0))
     spot = {}
     for i in spot_date:
         spot[(i - today).days] = (
@@ -93,7 +93,7 @@ def discount_usd_sofr(rate_dict):
 
     # Creo una lista para las fechas de inicio
     spot_date_start = []
-    spot_date_start.append(today + relativedelta(days=2))
+    spot_date_start.append(today + relativedelta(days=0))
     for i in spot_date[:-1]:
         spot_date_start.append(i)
 
