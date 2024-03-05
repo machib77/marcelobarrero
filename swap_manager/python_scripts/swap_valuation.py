@@ -4,7 +4,7 @@ from dateutil.relativedelta import relativedelta
 from scipy.interpolate import interp1d
 
 
-def fix_leg_valuation(notional, fix_rate, years):
+def fix_leg_valuation(notional, fix_rate, years, df_usd):
     today = date.today()
     df = pd.DataFrame(
         columns=[
@@ -54,5 +54,12 @@ def fix_leg_valuation(notional, fix_rate, years):
         df.loc[i, "cashflow"] = (
             df.loc[i, "amortization"] + df.loc[i, "interest"]
         )  # type:ignore
+    for i in range(years):
+        if df.loc[i, "dtm"] <= 0:  # type:ignore
+            pass
+        else:
+            df.loc[i, "df"] = interp1d(df_usd["days"], df_usd["df"])(df.loc[i, "dtm"])
+    for i in range(years):
+        df.loc[i, "pv"] = df.loc[i, "cashflow"] * df.loc[i, "df"]  # type:ignore
 
     return df

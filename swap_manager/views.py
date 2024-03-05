@@ -108,10 +108,11 @@ class GenerateSwapView(View):
         fix_rate = swap_inputs["fix-rate"]
         flow_years = int(swap_inputs["flow-years"])
 
-        # notional = float(request.POST.get("notional", 0.0))
-        # fix_rate = float(request.POST.get("fix-rate", 0.0))
-        # flow_years = int(request.POST.get("flow-years", 0))
+        # Recupero el dataframe df_usd de sessions
+        df_usd_dict = request.session.get("df_usd_dict", {})
+        df_usd = pd.DataFrame(df_usd_dict)
 
-        df = fix_leg_valuation(notional, fix_rate / 10000, flow_years)
+        df = fix_leg_valuation(notional, fix_rate / 100, flow_years, df_usd)
+        print(df.pv.sum())
         df_html = df.to_html()
         return HttpResponse(df_html)
