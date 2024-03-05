@@ -16,7 +16,7 @@ from .python_scripts.plotly_charts import scatter_plot
 from io import BytesIO
 import pandas as pd
 
-from .python_scripts.swap_valuation import fix_leg_valuation
+from .python_scripts.swap_valuation import fix_leg_valuation, float_leg_valuation
 
 # Llamo a mi diccionario con los defaults.
 curve_defaults = curve_defaults
@@ -105,7 +105,7 @@ class DownloadDiscount(View):
 class GenerateSwapView(View):
     def post(self, request, *args, **kwargs):
 
-        # Recupero el swap inputs de sessions
+        # Recupero el swap inputs de session
         swap_inputs = request.session.get("swap_inputs", {})
 
         notional = swap_inputs["notional"]
@@ -117,6 +117,37 @@ class GenerateSwapView(View):
         df_usd = pd.DataFrame(df_usd_dict)
 
         df = fix_leg_valuation(notional, fix_rate / 100, flow_years, df_usd)
-        print(df.pv.sum())
+
+        # Guardo fix_leg en session
+        df_str = df.copy()
+        df_str["start_date"] = df_str["start_date"].apply(
+            lambda x: x.strftime("%Y-%m-%d")
+        )
+        df_str["end_date"] = df_str["end_date"].apply(lambda x: x.strftime("%Y-%m-%d"))
+        df_dict = df_str.to_dict(orient="records")
+        request.session["fix_leg_dict"] = df_dict
+
         df_html = df.to_html()
         return HttpResponse(df_html)
+
+
+class GenerateFloatView(View):
+    def post(self, request):
+
+        # Recupero fix-leg de session
+        fix_leg_dict = request.session.get("fix_leg_dict", {})
+        fix_leg = pd.DataFrame(fix_leg_dict)[
+            [
+                "dtm",
+                "start_date",
+                "end_date",
+                "btw_days",
+                "notional",
+                "amortization",
+                "df",
+            ]
+        ].copy()
+
+        float_leg = float_leg_valuation(fix_leg)
+
+        return HttpResponse(float_leg.to_html())

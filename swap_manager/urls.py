@@ -5,6 +5,7 @@ from .views import (
     DiscountChartView,
     DownloadDiscount,
     GenerateSwapView,
+    GenerateFloatView,
 )
 
 urlpatterns = [
@@ -17,4 +18,5 @@ urlpatterns = [
     path("discount-chart/", DiscountChartView.as_view(), name="discount_chart"),
     path("download-discount/", DownloadDiscount.as_view(), name="download_discount"),
     path("generate-swap/", GenerateSwapView.as_view(), name="generate_swap"),
+    path("generate-float/", GenerateFloatView.as_view(), name="generate_float"),
 ]

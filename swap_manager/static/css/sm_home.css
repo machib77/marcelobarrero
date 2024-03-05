@@ -8,10 +8,8 @@
   width: 4em;
 }
 
-#discount-trigger {
-  display: none;
-}
-
-#fix-leg-trigger {
+#discount-trigger,
+#fix-leg-trigger,
+#float-leg-trigger {
   display: none;
 }

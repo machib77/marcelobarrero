@@ -76,6 +76,20 @@
     <div>
         <div id="fix-leg-container"></div>
     </div>
+    <div>
+        <form id="trigger-float-leg-form">
+            {% csrf_token %}
+            <input type="number"
+                   name="float-leg-trigger"
+                   id="float-leg-trigger"
+                   hx-post="{% url "generate_float" %}"
+                   hx-trigger="change"
+                   hx-target="#float-leg-container">
+        </form>
+    </div>
+    <div>
+        <div id="float-leg-container"></div>
+    </div>
     <!-- Asigno tenors_json a una variable JavaScript -->
     <script>
         const curveDefaultsJson = {{ curve_defaults_json|safe }};
@@ -84,7 +98,5 @@
     <!-- JavaScript for initial rates -->
     <script src="{% static "js/initialConditions.js" %}"></script>
     <!-- JavaScript to trigger the discount chart-->
-    <script src="{% static "js/triggerDiscount.js" %}"></script>
-    <!-- JavaScript to trigger the fix leg-->
-    <script src="{% static "js/triggerFixLeg.js" %}"></script>
+    <script src="{% static "js/triggers.js" %}"></script>
 {% endblock content %}
