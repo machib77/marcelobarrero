@@ -43,12 +43,17 @@ class ChartGeneratorView(View):
     def post(self, request):
 
         rate_dict = {}
+        swap_inputs = {}
 
         for tenor in curve_defaults.keys():
             rate_dict[tenor] = float(request.POST.get(tenor, 0))
 
+        for swap_default in swap_defaults.keys():
+            swap_inputs[swap_default] = float(request.POST.get(swap_default, 0))
+
         # Guardar rate_dict en session
         request.session["rate_dict"] = rate_dict
+        request.session["swap_inputs"] = swap_inputs
 
         # Genero el gráfico plotly de las TASAS SPOT
         chart = scatter_plot(list(rate_dict.keys()), list(rate_dict.values()))
@@ -100,9 +105,8 @@ class DownloadDiscount(View):
 class GenerateSwapView(View):
     def post(self, request, *args, **kwargs):
 
-        swap_inputs = {}
-        for swap_default in swap_defaults.keys():
-            swap_inputs[swap_default] = float(request.POST.get(swap_default, 0))
+        # Recupero el swap inputs de sessions
+        swap_inputs = request.session.get("swap_inputs", {})
 
         notional = swap_inputs["notional"]
         fix_rate = swap_inputs["fix-rate"]

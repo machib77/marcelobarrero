@@ -28,6 +28,16 @@
                            hx-target="#chart-container">
                     <br>
                 {% endfor %}
+                {% for swap_default in swap_defaults %}
+                    <label for="{{ swap_default }}">{{ swap_default }}</label>
+                    <input type="number"
+                           name="{{ swap_default }}"
+                           id="{{ swap_default }}"
+                           hx-post="{% url 'generate_chart' %}"
+                           hx-trigger="change"
+                           hx-target="#chart-container">
+                    <br>
+                {% endfor %}
             </form>
         </div>
     </div>
@@ -53,18 +63,14 @@
         </form>
     </div>
     <div>
-        <form id="swap-inputs-form">
+        <form id="trigger-fix-leg-form">
             {% csrf_token %}
-            {% for swap_default in swap_defaults %}
-                <label for="{{ swap_default }}">{{ swap_default }}</label>
-                <input type="number"
-                       name="{{ swap_default }}"
-                       id="{{ swap_default }}"
-                       hx-post="{% url 'generate_swap' %}"
-                       hx-trigger="change"
-                       hx-target="#fix-leg-container">
-                <br>
-            {% endfor %}
+            <input type="number"
+                   name="fix-leg-trigger"
+                   id="fix-leg-trigger"
+                   hx-post="{% url "generate_swap" %}"
+                   hx-trigger="change"
+                   hx-target="#fix-leg-container">
         </form>
     </div>
     <div>
@@ -79,6 +85,6 @@
     <script src="{% static "js/initialConditions.js" %}"></script>
     <!-- JavaScript to trigger the discount chart-->
     <script src="{% static "js/triggerDiscount.js" %}"></script>
-    <!-- JavaScript to trigger rate refresh -->
-    <script src="{% static "js/triggerFromSwapInputs.js" %}"></script>
+    <!-- JavaScript to trigger the fix leg-->
+    <script src="{% static "js/triggerFixLeg.js" %}"></script>
 {% endblock content %}
