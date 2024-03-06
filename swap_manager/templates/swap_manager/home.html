@@ -68,13 +68,23 @@
             <input type="number"
                    name="fix-leg-trigger"
                    id="fix-leg-trigger"
-                   hx-post="{% url "generate_swap" %}"
+                   hx-post="{% url "generate_fix" %}"
                    hx-trigger="change"
                    hx-target="#fix-leg-container">
+        </form>
+        <form id="trigger-fix-leg-pv-form">
+            {% csrf_token %}
+            <input type="number"
+                   name="fix-leg-pv-trigger"
+                   id="fix-leg-pv-trigger"
+                   hx-post="{% url "fix_pv" %}"
+                   hx-trigger="change"
+                   hx-target="#fix-leg-pv-container">
         </form>
     </div>
     <div>
         <div id="fix-leg-container"></div>
+        <div id="fix-leg-pv-container"></div>
     </div>
     <div>
         <form id="trigger-float-leg-form">
@@ -86,9 +96,33 @@
                    hx-trigger="change"
                    hx-target="#float-leg-container">
         </form>
+        <form id="trigger-float-leg-pv-form">
+            {% csrf_token %}
+            <input type="number"
+                   name="float-leg-pv-trigger"
+                   id="float-leg-pv-trigger"
+                   hx-post="{% url "float_pv" %}"
+                   hx-trigger="change"
+                   hx-target="#float-leg-pv-container">
+        </form>
     </div>
     <div>
         <div id="float-leg-container"></div>
+        <div id="float-leg-pv-container"></div>
+    </div>
+    <div>
+        <form id="trigger-mtm-form">
+            {% csrf_token %}
+            <input type="number"
+                   name="mtm-trigger"
+                   id="mtm-trigger"
+                   hx-post="{% url "mtm" %}"
+                   hx-trigger="change"
+                   hx-target="#mtm-container">
+        </form>
+    </div>
+    <div>
+        <div id="mtm-container"></div>
     </div>
     <!-- Asigno tenors_json a una variable JavaScript -->
     <script>

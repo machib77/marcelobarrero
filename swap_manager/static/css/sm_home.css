@@ -10,6 +10,9 @@
 
 #discount-trigger,
 #fix-leg-trigger,
-#float-leg-trigger {
+#float-leg-trigger,
+#fix-leg-pv-trigger,
+#float-leg-pv-trigger,
+#mtm-trigger {
   display: none;
 }

@@ -20,3 +20,24 @@ document.addEventListener('htmx:afterSwap', function (event) {
     inputElement.dispatchEvent(new Event('change'));
   }
 });
+
+document.addEventListener('htmx:afterSwap', function (event) {
+  if (event.target.id === 'float-leg-container') {
+    let inputElement = document.getElementById('fix-leg-pv-trigger');
+    inputElement.dispatchEvent(new Event('change'));
+  }
+});
+
+document.addEventListener('htmx:afterSwap', function (event) {
+  if (event.target.id === 'fix-leg-pv-container') {
+    let inputElement = document.getElementById('float-leg-pv-trigger');
+    inputElement.dispatchEvent(new Event('change'));
+  }
+});
+
+document.addEventListener('htmx:afterSwap', function (event) {
+  if (event.target.id === 'float-leg-pv-container') {
+    let inputElement = document.getElementById('mtm-trigger');
+    inputElement.dispatchEvent(new Event('change'));
+  }
+});

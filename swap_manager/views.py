@@ -102,7 +102,7 @@ class DownloadDiscount(View):
         return response
 
 
-class GenerateSwapView(View):
+class GenerateFixView(View):
     def post(self, request, *args, **kwargs):
 
         # Recupero el swap inputs de session
@@ -127,6 +127,10 @@ class GenerateSwapView(View):
         df_dict = df_str.to_dict(orient="records")
         request.session["fix_leg_dict"] = df_dict
 
+        # Guardo fix_leg pv en session
+        pv = df.pv.sum()
+        request.session["fix_leg_pv"] = pv
+
         df_html = df.to_html()
         return HttpResponse(df_html)
 
@@ -150,4 +154,31 @@ class GenerateFloatView(View):
 
         float_leg = float_leg_valuation(fix_leg)
 
+        # Guardo float_leg pv en session
+        pv = float_leg.pv.sum()
+        request.session["float_leg_pv"] = pv
+
         return HttpResponse(float_leg.to_html())
+
+
+class FixPresentValueView(View):
+    def post(self, request):
+        # Recupero fix_leg pv de session
+        fix_leg_pv = request.session.get("fix_leg_pv", {})
+        return HttpResponse(fix_leg_pv)
+
+
+class FloatPresentValueView(View):
+    def post(self, request):
+        # Recupero float_leg pv de session
+        float_leg_pv = request.session.get("float_leg_pv", {})
+        return HttpResponse(float_leg_pv)
+
+
+class MarkToMarketView(View):
+    def post(self, request):
+        # Recupero fix_leg pv y float_leg pv de session
+        fix_leg_pv = request.session.get("fix_leg_pv", {})
+        float_leg_pv = request.session.get("float_leg_pv", {})
+        mtm = fix_leg_pv + float_leg_pv
+        return HttpResponse(mtm)
