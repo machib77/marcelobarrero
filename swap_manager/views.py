@@ -47,7 +47,6 @@ class ChartGeneratorView(View):
 
         for tenor in curve_defaults.keys():
             rate_dict[tenor] = float(request.POST.get(tenor, 0))
-
         for swap_default in swap_defaults.keys():
             swap_inputs[swap_default] = float(request.POST.get(swap_default, 0))
 
@@ -103,7 +102,7 @@ class DownloadDiscount(View):
 
 
 class GenerateFixView(View):
-    def post(self, request, *args, **kwargs):
+    def post(self, request):
 
         # Recupero el swap inputs de session
         swap_inputs = request.session.get("swap_inputs", {})
@@ -131,7 +130,8 @@ class GenerateFixView(View):
         pv = df.pv.sum()
         request.session["fix_leg_pv"] = pv
 
-        df_html = df.to_html()
+        format_dict = {"notional": "{:,.0f}"}
+        df_html = df.style.format({"notional": "{:,}"}).hide(axis="index").to_html()
         return HttpResponse(df_html)
 
 
@@ -158,7 +158,7 @@ class GenerateFloatView(View):
         pv = float_leg.pv.sum()
         request.session["float_leg_pv"] = pv
 
-        return HttpResponse(float_leg.to_html())
+        return HttpResponse(float_leg.to_html(index=False))
 
 
 class FixPresentValueView(View):

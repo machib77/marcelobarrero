@@ -13,10 +13,10 @@
     <div class="top-title">
         <h1>Swap Manager Home</h1>
     </div>
-    <div class="curve-container">
-        <div id="spot-rates-container">
-            <form id="spot-rates-form">
-                {% csrf_token %}
+    <div class="input-container">
+        <form id="input-rates-form">
+            {% csrf_token %}
+            <div id="spot-rates-form">
                 {% for curve_default in curve_defaults.keys %}
                     <label for="{{ curve_default }}">{{ curve_default }}</label>
                     <input type="number"
@@ -28,6 +28,8 @@
                            hx-target="#chart-container">
                     <br>
                 {% endfor %}
+            </div>
+            <div id="swap-input-form">
                 {% for swap_default in swap_defaults %}
                     <label for="{{ swap_default }}">{{ swap_default }}</label>
                     <input type="number"
@@ -35,11 +37,12 @@
                            id="{{ swap_default }}"
                            hx-post="{% url 'generate_chart' %}"
                            hx-trigger="change"
-                           hx-target="#chart-container">
+                           hx-target="#chart-container"
+                           {% if swap_default == "flow-years" %}min="1" max="20" step="1" onkeyup=enforceMinMax(this){% endif %}>
                     <br>
                 {% endfor %}
-            </form>
-        </div>
+            </div>
+        </form>
     </div>
     <div>
         <div id="chart-container"></div>
@@ -124,6 +127,8 @@
     <div>
         <div id="mtm-container"></div>
     </div>
+    <!-- Script para asegurarme de que no pongan valores inapropiados -->
+    <script src="{% static "js/enforce.js" %}"></script>
     <!-- Asigno tenors_json a una variable JavaScript -->
     <script>
         const curveDefaultsJson = {{ curve_defaults_json|safe }};

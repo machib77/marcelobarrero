@@ -9,9 +9,15 @@ function initialConditions() {
   }
 
   for (let key in swapDefaultsJson) {
-    document.getElementById(key).value = parseFloat(
-      swapDefaultsJson[key]
-    ).toFixed(2);
+    if (key == 'flow-years') {
+      document.getElementById(key).value = parseFloat(
+        swapDefaultsJson[key]
+      ).toFixed(0);
+    } else {
+      document.getElementById(key).value = parseFloat(
+        swapDefaultsJson[key]
+      ).toFixed(2);
+    }
   }
 
   // Simulo un evento input para rates
