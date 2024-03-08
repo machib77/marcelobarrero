@@ -17,7 +17,12 @@ from io import BytesIO
 import pandas as pd
 
 from .python_scripts.swap_valuation import fix_leg_valuation, float_leg_valuation
-from .python_scripts.table_style import format_dict, table_style_list
+from .python_scripts.table_style import (
+    format_dict,
+    table_style_list,
+    format_dict_float,
+    format_number,
+)
 
 # Llamo a mi diccionario con los defaults.
 curve_defaults = curve_defaults
@@ -121,9 +126,9 @@ class GenerateFixView(View):
         # Guardo fix_leg en session
         df_str = df.copy()
         df_str["start_date"] = df_str["start_date"].apply(
-            lambda x: x.strftime("%Y-%m-%d")
+            lambda x: x.strftime("%d-%m-%y")
         )
-        df_str["end_date"] = df_str["end_date"].apply(lambda x: x.strftime("%Y-%m-%d"))
+        df_str["end_date"] = df_str["end_date"].apply(lambda x: x.strftime("%d-%m-%y"))
         df_dict = df_str.to_dict(orient="records")
         request.session["fix_leg_dict"] = df_dict
 
@@ -163,21 +168,32 @@ class GenerateFloatView(View):
         pv = float_leg.pv.sum()
         request.session["float_leg_pv"] = pv
 
-        return HttpResponse(float_leg.to_html(index=False))
+        print(type(float_leg.loc[0, "start_date"]))
+
+        float_html = (
+            float_leg.style.format(format_dict_float)  # type:ignore
+            .hide(axis="index")
+            .set_table_styles(table_style_list)  # type:ignore
+            .to_html()
+        )
+
+        return HttpResponse(float_html)
 
 
 class FixPresentValueView(View):
     def post(self, request):
         # Recupero fix_leg pv de session
         fix_leg_pv = request.session.get("fix_leg_pv", {})
-        return HttpResponse(fix_leg_pv)
+        formatted_fix_leg_pv = format_number(fix_leg_pv)
+        return HttpResponse(formatted_fix_leg_pv)
 
 
 class FloatPresentValueView(View):
     def post(self, request):
         # Recupero float_leg pv de session
         float_leg_pv = request.session.get("float_leg_pv", {})
-        return HttpResponse(float_leg_pv)
+        formatted_float_leg_pv = format_number(float_leg_pv)
+        return HttpResponse(formatted_float_leg_pv)
 
 
 class MarkToMarketView(View):
@@ -186,4 +202,5 @@ class MarkToMarketView(View):
         fix_leg_pv = request.session.get("fix_leg_pv", {})
         float_leg_pv = request.session.get("float_leg_pv", {})
         mtm = fix_leg_pv + float_leg_pv
-        return HttpResponse(mtm)
+        formated_mtm = format_number(mtm)
+        return HttpResponse(formated_mtm)

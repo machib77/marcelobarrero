@@ -26,3 +26,10 @@ td {
   padding-left: 1em;
   padding-right: 1em;
 }
+
+#fix-leg-pv-container,
+#float-leg-pv-container,
+#mtm-container {
+  color: #7f49a3;
+  background-color: black;
+}

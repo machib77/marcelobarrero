@@ -25,8 +25,23 @@ table_style_list = [
             ("border", "1px solid #959595"),
             ("background-color", "#212121"),
             ("color", "#8B8B8B"),
+            ("text-align", "center"),
         ],
     },
     {"selector": "tr:nth-child(odd)", "props": [("background-color", "black")]},
     {"selector": "tr:nth-child(even)", "props": [("background-color", "#212121")]},
 ]
+
+format_dict_float = {
+    "notional": "{:,.0f}",
+    "amortization": "{:,.0f}",
+    "interest": "{:,.2f}",
+    "cashflow": "{:,.2f}",
+    "df": "{:,.4f}",
+    "pv": "{:,.2f}",
+}
+
+
+def format_number(number):
+    formatted_number = "{:,.2f}".format(number)
+    return formatted_number
