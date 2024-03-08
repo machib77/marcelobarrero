@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Marcellus&display=swap');
+
 #spot-rates-form label {
   display: inline-block;
   width: 2em;
@@ -32,4 +34,22 @@ td {
 #mtm-container {
   color: #7f49a3;
   background-color: black;
+}
+
+#input-rates-form input {
+  background-color: #ff9c29;
+  font-family: 'Courier Prime', monospace;
+}
+
+#input-rates-form label {
+  color: #ff9c29;
+}
+
+body {
+  background-color: black;
+  font-family: 'Courier Prime', monospace;
+}
+
+.top-title h1 {
+  color: #ff9c29;
 }
