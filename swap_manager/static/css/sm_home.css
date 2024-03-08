@@ -16,3 +16,13 @@
 #mtm-trigger {
   display: none;
 }
+
+#fix-leg-container table,
+#float-leg-container table {
+  border-collapse: collapse;
+}
+
+td {
+  padding-left: 1em;
+  padding-right: 1em;
+}

@@ -17,6 +17,7 @@ from io import BytesIO
 import pandas as pd
 
 from .python_scripts.swap_valuation import fix_leg_valuation, float_leg_valuation
+from .python_scripts.table_style import format_dict, table_style_list
 
 # Llamo a mi diccionario con los defaults.
 curve_defaults = curve_defaults
@@ -130,8 +131,12 @@ class GenerateFixView(View):
         pv = df.pv.sum()
         request.session["fix_leg_pv"] = pv
 
-        format_dict = {"notional": "{:,.0f}"}
-        df_html = df.style.format({"notional": "{:,}"}).hide(axis="index").to_html()
+        df_html = (
+            df.style.format(format_dict)  # type:ignore
+            .hide(axis="index")
+            .set_table_styles(table_style_list)  # type:ignore
+            .to_html()
+        )
         return HttpResponse(df_html)
 
 
