@@ -71,6 +71,7 @@ td {
 
 .sum-title {
   color: #7f49a3;
+  text-align: right;
 }
 
 #input-rates-form input {
@@ -103,7 +104,7 @@ body {
   font-family: 'NeueHaasDisplayLightItalic';
 }
 
-#cashflow-title h3 {
+#cashflows-title h3 {
   color: white;
   font-family: 'Open Sans', verdana, arial, sans-serif;
   text-align: center;
@@ -143,4 +144,22 @@ body {
 #download-df-container {
   text-align: left;
   padding-left: 3em;
+}
+
+.cashflows-container {
+  display: grid !important;
+  grid-template-columns: minmax(auto, 200px) 1fr minmax(auto, 200px);
+  gap: 20px;
+}
+
+.cashflows-left-space {
+  grid-column: 1 / 2;
+}
+
+.cashflows-content-container {
+  grid-column: 2 / 3;
+}
+
+.cashflows-right-space {
+  grid-column: 3 / 4;
 }
