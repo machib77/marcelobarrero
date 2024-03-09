@@ -14,7 +14,7 @@ def scatter_plot(x, y, mode="lines+markers"):
 
     layout = go.Layout(
         plot_bgcolor="#212121",
-        paper_bgcolor="black",
+        paper_bgcolor="#141414",
         font=dict(color="white"),
         xaxis=dict(color="white", gridcolor="#2e2e2e"),
         yaxis=dict(color="white", gridcolor="#2e2e2e"),

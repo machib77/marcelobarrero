@@ -28,7 +28,7 @@ table_style_list = [
             ("text-align", "center"),
         ],
     },
-    {"selector": "tr:nth-child(odd)", "props": [("background-color", "black")]},
+    {"selector": "tr:nth-child(odd)", "props": [("background-color", "#141414")]},
     {"selector": "tr:nth-child(even)", "props": [("background-color", "#212121")]},
 ]
 

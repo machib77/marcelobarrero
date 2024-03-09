@@ -1,5 +1,37 @@
 @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Marcellus&display=swap');
 
+@font-face {
+  font-family: 'NeueHaasDisplayBlack';
+  font-style: normal;
+  font-weight: normal;
+  src: local('NeueHaasDisplayBlack'),
+    url('/static/fonts/NeueHaasDisplayBlack.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'NeueHaasDisplayLight';
+  font-style: normal;
+  font-weight: normal;
+  src: local('NeueHaasDisplayLight'),
+    url('/static/fonts/NeueHaasDisplayLight.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'NeueHaasDisplayLightItalic';
+  font-style: normal;
+  font-weight: normal;
+  src: local('NeueHaasDisplayLightItalic'),
+    url('/static/fonts/NeueHaasDisplayLightItalic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'NeueHaasDisplayMedium';
+  font-style: normal;
+  font-weight: normal;
+  src: local('NeueHaasDisplayMedium'),
+    url('/static/fonts/NeueHaasDisplayMedium.ttf') format('truetype');
+}
+
 #spot-rates-form label {
   display: inline-block;
   width: 2em;
@@ -33,7 +65,7 @@ td {
 #float-leg-pv-container,
 #mtm-container {
   color: #7f49a3;
-  background-color: black;
+  background-color: #141414;
 }
 
 #input-rates-form input {
@@ -46,10 +78,16 @@ td {
 }
 
 body {
-  background-color: black;
+  background-color: #141414;
   font-family: 'Courier Prime', monospace;
 }
 
 .top-title h1 {
-  color: #ff9c29;
+  color: white;
+  font-family: 'NeueHaasDisplayMedium';
+}
+
+.top-title h2 {
+  color: white;
+  font-family: 'NeueHaasDisplayLightItalic';
 }
