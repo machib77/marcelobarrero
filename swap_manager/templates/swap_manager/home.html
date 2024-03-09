@@ -14,57 +14,61 @@
         <h1>Swap Manager</h1>
         <h2>USD vs SOFR - Swap Valuation</h2>
     </div>
-    <div class="input-container">
-        <form id="input-rates-form">
-            {% csrf_token %}
-            <div id="spot-rates-form">
-                {% for curve_default in curve_defaults.keys %}
-                    <label for="{{ curve_default }}">{{ curve_default }}</label>
-                    <input type="number"
-                           step="0.01"
-                           name="{{ curve_default }}"
-                           id="{{ curve_default }}"
-                           hx-post="{% url 'generate_chart' %}"
-                           hx-trigger="change"
-                           hx-target="#chart-container">
-                    <br>
-                {% endfor %}
+    <div class="grid-container">
+        <div class="input-container">
+            <form id="input-rates-form">
+                {% csrf_token %}
+                <div id="spot-rates-form">
+                    {% for curve_default in curve_defaults.keys %}
+                        <label for="{{ curve_default }}">{{ curve_default }}</label>
+                        <input type="number"
+                               step="0.01"
+                               name="{{ curve_default }}"
+                               id="{{ curve_default }}"
+                               hx-post="{% url 'generate_chart' %}"
+                               hx-trigger="change"
+                               hx-target="#chart-container">
+                        <br>
+                    {% endfor %}
+                </div>
+                <div id="swap-input-form">
+                    {% for swap_default in swap_defaults %}
+                        <label for="{{ swap_default }}">{{ swap_default }}</label>
+                        <input type="number"
+                               name="{{ swap_default }}"
+                               id="{{ swap_default }}"
+                               hx-post="{% url 'generate_chart' %}"
+                               hx-trigger="change"
+                               hx-target="#chart-container"
+                               {% if swap_default == "flow-years" %}min="1" max="20" step="1" onkeyup=enforceMinMax(this){% endif %}>
+                        <br>
+                    {% endfor %}
+                </div>
+            </form>
+        </div>
+        <div class="charts-container">
+            <div>
+                <div id="chart-container"></div>
             </div>
-            <div id="swap-input-form">
-                {% for swap_default in swap_defaults %}
-                    <label for="{{ swap_default }}">{{ swap_default }}</label>
+            <div>
+                <form id="trigger-form">
+                    {% csrf_token %}
                     <input type="number"
-                           name="{{ swap_default }}"
-                           id="{{ swap_default }}"
-                           hx-post="{% url 'generate_chart' %}"
+                           name="discount-trigger"
+                           id="discount-trigger"
+                           hx-post="{% url "discount_chart" %}"
                            hx-trigger="change"
-                           hx-target="#chart-container"
-                           {% if swap_default == "flow-years" %}min="1" max="20" step="1" onkeyup=enforceMinMax(this){% endif %}>
-                    <br>
-                {% endfor %}
+                           hx-target="#discount-container">
+                </form>
+                <div id="discount-container"></div>
             </div>
-        </form>
-    </div>
-    <div>
-        <div id="chart-container"></div>
-    </div>
-    <div>
-        <form id="trigger-form">
-            {% csrf_token %}
-            <input type="number"
-                   name="discount-trigger"
-                   id="discount-trigger"
-                   hx-post="{% url "discount_chart" %}"
-                   hx-trigger="change"
-                   hx-target="#discount-container">
-        </form>
-        <div id="discount-container"></div>
-    </div>
-    <div>
-        <form action="{% url "download_discount" %}" method="post">
-            {% csrf_token %}
-            <button type="submit">Download Excel</button>
-        </form>
+            <div>
+                <form action="{% url "download_discount" %}" method="post">
+                    {% csrf_token %}
+                    <button id="download-df-button" type="submit">Download Excel</button>
+                </form>
+            </div>
+        </div>
     </div>
     <div>
         <form id="trigger-fix-leg-form">

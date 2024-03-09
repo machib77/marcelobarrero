@@ -91,3 +91,24 @@ body {
   color: white;
   font-family: 'NeueHaasDisplayLightItalic';
 }
+
+#download-df-button {
+  background-color: #ff9c29;
+  color: #141414;
+  font-family: 'Courier Prime', monospace;
+}
+
+.grid-container {
+  display: grid !important;
+  grid-template-columns: auto 1fr !important;
+  gap: 20px !important;
+}
+
+.input-container {
+  max-width: 300px;
+  grid-column: 1 / 2 !important;
+}
+
+.charts-container {
+  grid-column: 2 / 3 !important;
+}
