@@ -62,13 +62,16 @@
                 </form>
                 <div id="discount-container"></div>
             </div>
-            <div>
+            <div id="download-df-container">
                 <form action="{% url "download_discount" %}" method="post">
                     {% csrf_token %}
-                    <button id="download-df-button" type="submit">Download Excel</button>
+                    <button id="download-df-button" type="submit">Download DF</button>
                 </form>
             </div>
         </div>
+    </div>
+    <div id="cashflow-title">
+        <h3>Cashflows</h3>
     </div>
     <div>
         <form id="trigger-fix-leg-form">
@@ -91,8 +94,12 @@
         </form>
     </div>
     <div>
+        <h4>Fix Leg</h4>
         <div id="fix-leg-container"></div>
-        <div id="fix-leg-pv-container"></div>
+        <div class="sum-title">
+            Fix Leg PV:
+            <div id="fix-leg-pv-container"></div>
+        </div>
     </div>
     <div>
         <form id="trigger-float-leg-form">
@@ -115,8 +122,12 @@
         </form>
     </div>
     <div>
+        <h4>Float Leg</h4>
         <div id="float-leg-container"></div>
-        <div id="float-leg-pv-container"></div>
+        <div class="sum-title">
+            Float Leg PV:
+            <div id="float-leg-pv-container"></div>
+        </div>
     </div>
     <div>
         <form id="trigger-mtm-form">
@@ -129,7 +140,8 @@
                    hx-target="#mtm-container">
         </form>
     </div>
-    <div>
+    <div class="sum-title">
+        MTM :
         <div id="mtm-container"></div>
     </div>
     <!-- Script para asegurarme de que no pongan valores inapropiados -->

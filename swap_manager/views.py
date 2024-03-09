@@ -60,8 +60,12 @@ class ChartGeneratorView(View):
         request.session["rate_dict"] = rate_dict
         request.session["swap_inputs"] = swap_inputs
 
+        title = "Spot Rates Curve"
+
         # Genero el gráfico plotly de las TASAS SPOT
-        chart = scatter_plot(list(rate_dict.keys()), list(rate_dict.values()))
+        chart = scatter_plot(
+            list(rate_dict.keys()), list(rate_dict.values()), title=title
+        )
 
         return HttpResponse(chart)
 
@@ -80,8 +84,10 @@ class DiscountChartView(View):
         df_usd_dict = df_usd_str.to_dict(orient="records")
         request.session["df_usd_dict"] = df_usd_dict
 
+        title = "Discount Factors"
+
         # Genero el gráfico
-        disc_chart = scatter_plot(list(df_usd.date), list(df_usd.df))
+        disc_chart = scatter_plot(list(df_usd.date), list(df_usd.df), title=title)
 
         return HttpResponse(disc_chart)
 

@@ -66,11 +66,21 @@ td {
 #mtm-container {
   color: #7f49a3;
   background-color: #141414;
+  display: inline;
+}
+
+.sum-title {
+  color: #7f49a3;
 }
 
 #input-rates-form input {
   background-color: #ff9c29;
   font-family: 'Courier Prime', monospace;
+}
+
+#swap-input-form {
+  padding-top: 1em;
+  padding-bottom: 2em;
 }
 
 #input-rates-form label {
@@ -80,6 +90,7 @@ td {
 body {
   background-color: #141414;
   font-family: 'Courier Prime', monospace;
+  color: white;
 }
 
 .top-title h1 {
@@ -92,10 +103,26 @@ body {
   font-family: 'NeueHaasDisplayLightItalic';
 }
 
+#cashflow-title h3 {
+  color: white;
+  font-family: 'Open Sans', verdana, arial, sans-serif;
+  text-align: center;
+}
+
 #download-df-button {
   background-color: #ff9c29;
   color: #141414;
   font-family: 'Courier Prime', monospace;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+}
+
+#download-df-button:hover {
+  background-color: #ffc37e;
+  border-color: #ffc37e;
 }
 
 .grid-container {
@@ -105,10 +132,15 @@ body {
 }
 
 .input-container {
-  max-width: 300px;
+  max-width: 7em;
   grid-column: 1 / 2 !important;
 }
 
 .charts-container {
   grid-column: 2 / 3 !important;
+}
+
+#download-df-container {
+  text-align: left;
+  padding-left: 3em;
 }
