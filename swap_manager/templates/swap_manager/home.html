@@ -68,87 +68,87 @@
                     <button id="download-df-button" type="submit">Download DF</button>
                 </form>
             </div>
-        </div>
-    </div>
-    <div id="cashflows-title">
-        <h3>Cashflows</h3>
-    </div>
-    <div class="cashflows-container">
-        <div class="cashflows-left-space"></div>
-        <div class="cashflows-content-container">
-            <div>
-                <form id="trigger-fix-leg-form">
-                    {% csrf_token %}
-                    <input type="number"
-                           name="fix-leg-trigger"
-                           id="fix-leg-trigger"
-                           hx-post="{% url "generate_fix" %}"
-                           hx-trigger="change"
-                           hx-target="#fix-leg-container">
-                </form>
-                <form id="trigger-fix-leg-pv-form">
-                    {% csrf_token %}
-                    <input type="number"
-                           name="fix-leg-pv-trigger"
-                           id="fix-leg-pv-trigger"
-                           hx-post="{% url "fix_pv" %}"
-                           hx-trigger="change"
-                           hx-target="#fix-leg-pv-container">
-                </form>
+            <div id="cashflows-title">
+                <h3>Cashflows</h3>
             </div>
-            <div>
-                <h4>Fix Leg</h4>
-                <div id="fix-leg-container"></div>
-                <div class="sum-title">
-                    Fix Leg PV:
-                    <div id="fix-leg-pv-container"></div>
+            <div class="cashflows-container">
+                <div class="cashflows-left-space"></div>
+                <div class="cashflows-content-container">
+                    <div>
+                        <form id="trigger-fix-leg-form">
+                            {% csrf_token %}
+                            <input type="number"
+                                   name="fix-leg-trigger"
+                                   id="fix-leg-trigger"
+                                   hx-post="{% url "generate_fix" %}"
+                                   hx-trigger="change"
+                                   hx-target="#fix-leg-container">
+                        </form>
+                        <form id="trigger-fix-leg-pv-form">
+                            {% csrf_token %}
+                            <input type="number"
+                                   name="fix-leg-pv-trigger"
+                                   id="fix-leg-pv-trigger"
+                                   hx-post="{% url "fix_pv" %}"
+                                   hx-trigger="change"
+                                   hx-target="#fix-leg-pv-container">
+                        </form>
+                    </div>
+                    <div>
+                        <h4>Fix Leg</h4>
+                        <div id="fix-leg-container"></div>
+                        <div class="sum-title">
+                            Fix Leg PV:
+                            <div id="fix-leg-pv-container"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <form id="trigger-float-leg-form">
+                            {% csrf_token %}
+                            <input type="number"
+                                   name="float-leg-trigger"
+                                   id="float-leg-trigger"
+                                   hx-post="{% url "generate_float" %}"
+                                   hx-trigger="change"
+                                   hx-target="#float-leg-container">
+                        </form>
+                        <form id="trigger-float-leg-pv-form">
+                            {% csrf_token %}
+                            <input type="number"
+                                   name="float-leg-pv-trigger"
+                                   id="float-leg-pv-trigger"
+                                   hx-post="{% url "float_pv" %}"
+                                   hx-trigger="change"
+                                   hx-target="#float-leg-pv-container">
+                        </form>
+                    </div>
+                    <div>
+                        <h4>Float Leg</h4>
+                        <div id="float-leg-container"></div>
+                        <div class="sum-title">
+                            Float Leg PV:
+                            <div id="float-leg-pv-container"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <form id="trigger-mtm-form">
+                            {% csrf_token %}
+                            <input type="number"
+                                   name="mtm-trigger"
+                                   id="mtm-trigger"
+                                   hx-post="{% url "mtm" %}"
+                                   hx-trigger="change"
+                                   hx-target="#mtm-container">
+                        </form>
+                    </div>
+                    <div class="sum-title" id="sum-mtm">
+                        MTM :
+                        <div id="mtm-container"></div>
+                    </div>
                 </div>
-            </div>
-            <div>
-                <form id="trigger-float-leg-form">
-                    {% csrf_token %}
-                    <input type="number"
-                           name="float-leg-trigger"
-                           id="float-leg-trigger"
-                           hx-post="{% url "generate_float" %}"
-                           hx-trigger="change"
-                           hx-target="#float-leg-container">
-                </form>
-                <form id="trigger-float-leg-pv-form">
-                    {% csrf_token %}
-                    <input type="number"
-                           name="float-leg-pv-trigger"
-                           id="float-leg-pv-trigger"
-                           hx-post="{% url "float_pv" %}"
-                           hx-trigger="change"
-                           hx-target="#float-leg-pv-container">
-                </form>
-            </div>
-            <div>
-                <h4>Float Leg</h4>
-                <div id="float-leg-container"></div>
-                <div class="sum-title">
-                    Float Leg PV:
-                    <div id="float-leg-pv-container"></div>
-                </div>
-            </div>
-            <div>
-                <form id="trigger-mtm-form">
-                    {% csrf_token %}
-                    <input type="number"
-                           name="mtm-trigger"
-                           id="mtm-trigger"
-                           hx-post="{% url "mtm" %}"
-                           hx-trigger="change"
-                           hx-target="#mtm-container">
-                </form>
-            </div>
-            <div class="sum-title">
-                MTM :
-                <div id="mtm-container"></div>
+                <div class="cashflows-right-space"></div>
             </div>
         </div>
-        <div class="cashflows-right-space"></div>
     </div>
     <!-- Script para asegurarme de que no pongan valores inapropiados -->
     <script src="{% static "js/enforce.js" %}"></script>

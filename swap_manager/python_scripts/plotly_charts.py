@@ -29,6 +29,7 @@ def scatter_plot(x, y, title, mode="lines+markers"):
         xaxis=dict(color="white", gridcolor="#2e2e2e"),
         yaxis=dict(color="white", gridcolor="#2e2e2e"),
         margin=dict(l=50, r=50, t=50, b=50),
+        autosize=True,
     )
 
     fig = go.Figure(data=data, layout=layout)

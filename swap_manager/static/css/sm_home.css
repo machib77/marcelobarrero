@@ -54,11 +54,18 @@
 #fix-leg-container table,
 #float-leg-container table {
   border-collapse: collapse;
+  width: 100%;
+}
+
+#chart-container,
+#discount-container {
+  width: 100% !important;
 }
 
 td {
   padding-left: 1em;
   padding-right: 1em;
+  white-space: nowrap;
 }
 
 #fix-leg-pv-container,
@@ -106,30 +113,35 @@ body {
 
 #cashflows-title h3 {
   color: white;
-  font-family: 'Open Sans', verdana, arial, sans-serif;
+  font-family: arial, sans-serif;
   text-align: center;
+  padding-top: 2em;
+  font-weight: 600;
+  font-size: 20px;
+  white-space: pre;
 }
 
 #download-df-button {
   background-color: #ff9c29;
   color: #141414;
   font-family: 'Courier Prime', monospace;
-  border-radius: 5px;
+  border-radius: 10px;
   cursor: pointer;
   transition: all 0.3s ease;
-  padding-top: 0.5em;
-  padding-bottom: 0.5em;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  font-weight: bold;
 }
 
 #download-df-button:hover {
   background-color: #ffc37e;
-  border-color: #ffc37e;
+  border-color: #ff9c29;
 }
 
 .grid-container {
   display: grid !important;
   grid-template-columns: auto 1fr !important;
-  gap: 20px !important;
+  gap: 20px;
 }
 
 .input-container {
@@ -139,6 +151,7 @@ body {
 
 .charts-container {
   grid-column: 2 / 3 !important;
+  width: 100% !important;
 }
 
 #download-df-container {
@@ -148,7 +161,7 @@ body {
 
 .cashflows-container {
   display: grid !important;
-  grid-template-columns: minmax(auto, 200px) 1fr minmax(auto, 200px);
+  grid-template-columns: minmax(auto, 1.6em) 1fr minmax(auto, 1.5em);
   gap: 20px;
 }
 
@@ -162,4 +175,26 @@ body {
 
 .cashflows-right-space {
   grid-column: 3 / 4;
+}
+
+#sum-mtm {
+  font-weight: bold;
+}
+
+@media only screen and (max-width: 480px) {
+  body {
+    font-size: 10px;
+  }
+  .grid-container {
+    gap: 0px;
+  }
+  #swap-input-form {
+    width: 100%;
+  }
+  #notional {
+    width: 6em;
+  }
+  #fix-rate {
+    width: 4em;
+  }
 }

@@ -174,8 +174,6 @@ class GenerateFloatView(View):
         pv = float_leg.pv.sum()
         request.session["float_leg_pv"] = pv
 
-        print(type(float_leg.loc[0, "start_date"]))
-
         float_html = (
             float_leg.style.format(format_dict_float)  # type:ignore
             .hide(axis="index")
