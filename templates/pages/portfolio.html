@@ -1,5 +1,29 @@
 {% extends "_base.html" %}
+<!-- Static -->
 {% load static %}
+<!-- Extra CSS -->
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/portfolio.css' %}" />
+{% endblock extra_css %}
+<!-- Título -->
+{% block title %}
+    Portfolio
+{% endblock title %}
+<!-- Contenido -->
 {% block content %}
-    <h1>Portfolio</h1>
+    <div class="portfolio-title">
+        <h1>Portfolio</h1>
+    </div>
+    <div class="card portfolio-container">
+        <a href="{% url "sm-home" %}" target="_blank">
+            <img class="card-img-top" src="{% static "images/swpm.jpeg" %}" alt="swpm.jpeg" height="300" width="auto">
+            <h3 class="card-title">Swap Manager: USD vs SORF Swap Valuation</h3>
+            <p class="card-text">
+                A powerful tool designed for pricing USD vs SOFR interest rate swaps, empowering users to customize Spot Rates and swap cashflow details effortlessly. The calculator swiftly computes Discount Factors, Reset Rates, and Present Values for each leg, providing a comprehensive view of the swap. With the added convenience of downloading swap curves and associated discount factors directly to an Excel file, financial analysis becomes seamless.
+            </p>
+            <p class="card-text">
+                This project was meticulously crafted using Python, JavaScript, the Django Framework, and the HTMX library.
+            </p>
+        </a>
+    </div>
 {% endblock content %}

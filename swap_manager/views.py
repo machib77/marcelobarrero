@@ -30,7 +30,7 @@ swap_defaults = swap_defaults
 
 
 class HomePageView(TemplateView):
-    template_name = "swap_manager/home.html"
+    template_name = "swap_manager/sm-home.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

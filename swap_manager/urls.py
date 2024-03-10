@@ -12,7 +12,7 @@ from .views import (
 )
 
 urlpatterns = [
-    path("swap-manager/", HomePageView.as_view(), name="home"),
+    path("swap-manager/", HomePageView.as_view(), name="sm-home"),
     path(
         "generate-chart/",
         ChartGeneratorView.as_view(),
