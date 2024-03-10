@@ -27,7 +27,10 @@
                                id="{{ curve_default }}"
                                hx-post="{% url 'generate_chart' %}"
                                hx-trigger="change"
-                               hx-target="#chart-container">
+                               hx-target="#chart-container"
+                               min="-10"
+                               max="10"
+                               {% if True %}onkeyup=enforceMinMax(this){% endif %}>
                         <br>
                     {% endfor %}
                 </div>
