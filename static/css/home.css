@@ -2,6 +2,7 @@
   max-width: 600px; /* Adjust as needed */
   margin: 0 auto;
   padding: 20px;
+  background-color: #999d9e;
 }
 
 p {
@@ -10,4 +11,47 @@ p {
 
 main {
   background-color: #999d9e;
+}
+
+.marquee {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  position: relative;
+}
+
+.marquee span {
+  display: inline-block;
+  animation: marquee 4s linear;
+  width: 100%;
+  font-size: 12em;
+  color: white;
+}
+
+.marquee:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+#name-marquee {
+  position: absolute;
+  bottom: 0;
+  padding: 1em;
+}
+
+#candlestick {
+  position: absolute;
+  bottom: 0;
+  padding: 4em;
+  /* z-index: -1 !important; */
+  /* width: 800px;
+  height: 400px; */
 }
