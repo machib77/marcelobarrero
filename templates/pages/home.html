@@ -18,14 +18,10 @@
       {% endfor %}
     </ul>
   {% endif %}
-  <canvas id="candlestick" width="800" height="400"></canvas>
+  <canvas id="candlestick" width="800" height="800"></canvas>
   <div class="home-container">
     <br>
-    <img id="profile-pic"
-         src="{% static 'images/me.jpg' %}"
-         alt=""
-         width="300"
-         height="auto" />
+    {% comment %} <img id="profile-pic" src="{% static 'images/me.jpg' %}" alt="" width="300" height="auto" />
     <br>
     <br>
     <h1 id="cool-name">MARCELO BARRERO</h1>
@@ -41,7 +37,15 @@
     </p>
     <button>
       <a href="{% static 'documents/CV.pdf' %}" download>Download CV</a>
-    </button>
+    </button> {% endcomment %}
+  </div>
+  <div class="download-cv-shape">
+    <a href="{% static 'documents/CV.pdf' %}" download>
+      <div class="down-cv-text-container">Download CV</div>
+      <div class="svg-container">
+        <img id="svg-cv" src="{% static "images/resume2.svg" %}" alt="Resume" width="40" height="auto">
+      </div>
+    </a>
   </div>
   <div class="marquee" id="name-marquee">
     <span>Marcelo Barrero</span>

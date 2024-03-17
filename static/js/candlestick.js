@@ -3,75 +3,118 @@ document.addEventListener('DOMContentLoaded', function () {
   const canvas = document.getElementById('candlestick');
   const ctx = canvas.getContext('2d');
 
-  const commonY = 400; // Set a common y value for all candles
+  const commonY = 840; // Set a common y value for all candles
 
   const UP_COLOR = '#7a7d7e'; // Green
   const DOWN_COLOR = '#6b6d6e'; // Red
 
-  function generateRandomWalk(
-    numCandles,
-    min = 0,
-    max = 400,
-    stdDeviation,
-    minCandleHeight = 100
-  ) {
-    const candles = [];
-    let prevClose = 200;
+  // function generateRandomWalk(
+  //   numCandles,
+  //   min = 0,
+  //   max = 400,
+  //   stdDeviation,
+  //   minCandleHeight = 100
+  // ) {
+  //   const candles = [];
+  //   let prevClose = 200;
 
-    for (let i = 0; i < numCandles; i++) {
-      // Add some drift towards 200
-      const drift = (200 - prevClose) * 0.1;
+  //   for (let i = 0; i < numCandles; i++) {
+  //     // Add some drift towards 200
+  //     const drift = (200 - prevClose) * 0.1;
 
-      const randomChange = stdDeviation * (Math.random() - 0.5);
-      let newClose = prevClose + randomChange + drift;
+  //     const randomChange = stdDeviation * (Math.random() - 0.5);
+  //     let newClose = prevClose + randomChange + drift;
 
-      // Ensure the newClose stays within the min and max bounds
-      newClose = Math.max(min, Math.min(max, newClose));
+  //     // Ensure the newClose stays within the min and max bounds
+  //     newClose = Math.max(min, Math.min(max, newClose));
 
-      // Ensure the candle height is at least minCandleHeight (absolute value)
-      let candleHeight = Math.abs(newClose - prevClose);
-      if (candleHeight < minCandleHeight) {
-        if (newClose > prevClose) {
-          newClose = prevClose + minCandleHeight;
-        } else {
-          newClose = prevClose - minCandleHeight;
-        }
-      }
+  //     // Ensure the candle height is at least minCandleHeight (absolute value)
+  //     let candleHeight = Math.abs(newClose - prevClose);
+  //     if (candleHeight < minCandleHeight) {
+  //       if (newClose > prevClose) {
+  //         newClose = prevClose + minCandleHeight;
+  //       } else {
+  //         newClose = prevClose - minCandleHeight;
+  //       }
+  //     }
 
-      candles.push({ openPrice: prevClose, closePrice: newClose });
-      prevClose = newClose;
-    }
+  //     candles.push({ openPrice: prevClose, closePrice: newClose });
+  //     prevClose = newClose;
+  //   }
 
-    return candles;
-  }
+  //   return candles;
+  // }
 
-  // Example usage
-  const numCandles = 100;
-  const minPrice = 250;
-  const maxPrice = 400;
-  const stdDev = 300;
-  const minCandleHeight = 60;
+  // // Example usage
+  // const numCandles = 100;
+  // const minPrice = 250;
+  // const maxPrice = 400;
+  // const stdDev = 300;
+  // const minCandleHeight = 60;
 
-  const candles = generateRandomWalk(
-    numCandles,
-    minPrice,
-    maxPrice,
-    stdDev,
-    minCandleHeight
-  );
+  // const candles = generateRandomWalk(
+  //   numCandles,
+  //   minPrice,
+  //   maxPrice,
+  //   stdDev,
+  //   minCandleHeight
+  // );
 
-  console.log(candles);
+  //   console.log(candles);
 
-  const candlestickWidth = 20;
-  const candlestickGap = 5; // Smaller gap between candles
+  const candles = [
+    { openPrice: 240, closePrice: 200 },
+    { openPrice: 210, closePrice: 250 },
+    { openPrice: 200, closePrice: 180 },
+    { openPrice: 200, closePrice: 290 },
+    { openPrice: 240, closePrice: 330 },
+    { openPrice: 290, closePrice: 220 },
+    { openPrice: 230, closePrice: 280 },
+    { openPrice: 250, closePrice: 310 },
+    { openPrice: 260, closePrice: 350 },
+    { openPrice: 330, closePrice: 280 },
+    { openPrice: 320, closePrice: 260 },
+    { openPrice: 300, closePrice: 240 },
+    { openPrice: 280, closePrice: 370 },
+    { openPrice: 380, closePrice: 230 },
+    { openPrice: 250, closePrice: 420 },
+    { openPrice: 300, closePrice: 500 },
+    { openPrice: 470, closePrice: 380 },
+    { openPrice: 430, closePrice: 350 },
+    { openPrice: 410, closePrice: 310 },
+    { openPrice: 390, closePrice: 290 },
+    { openPrice: 330, closePrice: 380 },
+    { openPrice: 360, closePrice: 460 },
+    { openPrice: 450, closePrice: 390 },
+    { openPrice: 400, closePrice: 500 },
+    { openPrice: 460, closePrice: 520 },
+    { openPrice: 440, closePrice: 620 },
+    { openPrice: 580, closePrice: 500 },
+    { openPrice: 540, closePrice: 450 },
+    { openPrice: 480, closePrice: 650 },
+    { openPrice: 580, closePrice: 430 },
+    { openPrice: 460, closePrice: 540 },
+    { openPrice: 510, closePrice: 380 },
+    { openPrice: 400, closePrice: 490 },
+    { openPrice: 410, closePrice: 480 },
+    { openPrice: 460, closePrice: 550 },
+    { openPrice: 500, closePrice: 650 },
+    { openPrice: 600, closePrice: 750 },
+    { openPrice: 620, closePrice: 880 },
+    { openPrice: 0, closePrice: 0 },
+    { openPrice: 0, closePrice: 0 },
+  ];
+
+  const candlestickWidth = 40;
+  const candlestickGap = 10; // Smaller gap between candles
   const animationDuration = 50; // In milliseconds
 
   let currentCandleIndex = 0;
   let animationStartTime = null;
 
-  // Calculate total width needed for all candles
-  const totalCandlesWidth =
-    (candlestickWidth + candlestickGap) * candles.length;
+  //   // Calculate total width needed for all candles
+  //   const totalCandlesWidth =
+  //     (candlestickWidth + candlestickGap) * candles.length;
 
   // Start the candles from the left side of the canvas
   const startX = 0;
@@ -184,8 +227,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const marqueeHeight = marquee.offsetHeight;
 
     // Set the canvas width and height to match the marquee
-    canvas.width = marqueeWidth * 0.7;
-    canvas.height = marqueeHeight * 0.5;
+    canvas.width = marqueeWidth;
+    canvas.height = marqueeHeight * 2.4;
   }
 
   // Call the function once to set initial dimensions
