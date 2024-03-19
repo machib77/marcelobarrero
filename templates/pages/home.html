@@ -19,6 +19,7 @@
     </ul>
   {% endif %}
   <canvas id="candlestick" width="800" height="800"></canvas>
+  <canvas id="waves" width="800" height="800"></canvas>
   <div class="home-container">
     <br>
     {% comment %} <img id="profile-pic" src="{% static 'images/me.jpg' %}" alt="" width="300" height="auto" />
@@ -53,5 +54,6 @@
   <!-- JavaScript -->
   <script src="{% static 'js/messageSuccess.js' %}"></script>
   <script src="{% static "js/candlestick.js" %}"></script>
+  <script src="{% static "js/waves.js" %}"></script>
   <!-- end -->
 {% endblock content %}

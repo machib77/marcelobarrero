@@ -18,24 +18,26 @@ main {
   white-space: nowrap;
   overflow: hidden;
   position: relative;
+  text-align: center;
+  padding-bottom: 2em;
 }
 
 .marquee span {
   display: inline-block;
-  animation: marquee 4s linear;
+  animation: marquee 2.7s linear;
   width: 99%;
   font-size: 12em;
   color: white;
 }
 
-/* @keyframes marquee {
+@keyframes marquee {
   0% {
     transform: translateX(-100%);
   }
   100% {
     transform: translateX(0);
   }
-} */
+}
 
 #name-marquee {
   position: absolute;
@@ -116,4 +118,13 @@ main {
   z-index: 2;
   color: white;
   /* font-weight: bold; */
+}
+
+#waves {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 700px;
+  padding-bottom: 1em;
 }

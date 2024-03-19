@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const canvas = document.getElementById('candlestick');
   const ctx = canvas.getContext('2d');
 
-  const commonY = 840; // Set a common y value for all candles
+  const commonY = 900; // Set a common y value for all candles
 
   const UP_COLOR = '#7a7d7e'; // Green
   const DOWN_COLOR = '#6b6d6e'; // Red
