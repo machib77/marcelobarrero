@@ -2,7 +2,7 @@
   max-width: 600px; /* Adjust as needed */
   margin: 0 auto;
   padding: 20px;
-  background-color: #999d9e;
+  /* background-color: #999d9e; */
 }
 
 p {
@@ -10,7 +10,24 @@ p {
 }
 
 main {
-  background-color: #999d9e;
+  background-color: #4d5860;
+}
+
+#profile-pic {
+  height: 55em;
+  width: auto;
+  position: absolute;
+  bottom: 0;
+  left: 50.5%;
+  transform: translateX(-50%);
+}
+
+#quant {
+  color: white;
+  position: absolute;
+  right: 20%;
+  top: 40%;
+  font-size: 4em;
 }
 
 .marquee {
@@ -24,26 +41,37 @@ main {
 
 .marquee span {
   display: inline-block;
-  animation: marquee 2.7s linear;
+  animation: marquee 3.1s linear;
   width: 99%;
-  font-size: 12em;
+  font-size: 8em;
   color: white;
 }
 
-@keyframes marquee {
+/* @keyframes marquee {
   0% {
     transform: translateX(-100%);
   }
   100% {
     transform: translateX(0);
   }
+} */
+
+#first-name {
+  position: absolute;
+  top: 20%;
+  left: 14%;
+  padding-left: 1em;
+  font-size: 8em;
+  color: white;
 }
 
-#name-marquee {
+#last-name {
   position: absolute;
-  bottom: 0;
+  top: 20%;
+  right: 20%;
   padding-left: 1em;
-  /* border: 1px solid black; */
+  font-size: 8em;
+  color: white;
 }
 
 #candlestick {
@@ -63,7 +91,7 @@ main {
 }
 
 .download-cv-shape:hover::after {
-  background-color: #e07d3f; /* Change the color to the desired one on hover */
+  background-color: white; /* Change the color to the desired one on hover */
 }
 
 .download-cv-shape::before {
@@ -81,7 +109,7 @@ main {
   content: '';
   width: 40%; /* Width of the small circle */
   height: 70%; /* Height of the small circle */
-  background-color: #999d9e; /* Background color of the small circle  #999d9e*/
+  background-color: #8e8983; /* Background color of the small circle  #999d9e*/
   border-radius: 50%; /* Make it a circle */
   position: absolute;
   top: 50%;
@@ -127,4 +155,169 @@ main {
   width: 100%;
   height: 700px;
   padding-bottom: 1em;
+}
+
+@media only screen and (max-width: 1880px) {
+  #profile-pic {
+    height: 42em;
+  }
+
+  #first-name {
+    top: 25%;
+    left: 10%;
+    font-size: 6em;
+  }
+
+  #last-name {
+    top: 25%;
+    right: 17%;
+    font-size: 6em;
+  }
+
+  #quant {
+    right: 17%;
+    top: 43%;
+    font-size: 2.7em;
+  }
+
+  #waves {
+    height: 500px;
+    padding-bottom: 1em;
+  }
+}
+
+@media only screen and (max-width: 932px) {
+  #profile-pic {
+    height: 42em;
+  }
+
+  #first-name {
+    top: 7%;
+    font-size: 4em;
+    left: 0%;
+    justify-content: center;
+  }
+
+  #last-name {
+    top: 14%;
+    right: 10%;
+    justify-content: center;
+    font-size: 4em;
+  }
+
+  #quant {
+    top: 24%;
+    right: 30%;
+    font-size: 1.5em;
+    justify-content: center;
+  }
+
+  #waves {
+    height: 700px;
+    padding-bottom: 1em;
+  }
+
+  .download-cv-shape {
+    width: 11em; /* Width of the rectangle */
+    height: 6em; /* Height of the rectangle */
+    background-color: #1c1d20; /* Background color of the rectangle */
+    position: relative;
+    top: 60%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  #profile-pic {
+    height: 54em;
+  }
+
+  #first-name {
+    top: 20%;
+    font-size: 5em;
+    left: -8%;
+  }
+
+  #last-name {
+    top: 20%;
+    right: 1%;
+    font-size: 5em;
+  }
+
+  #quant {
+    right: 2%;
+    top: 33%;
+    font-size: 2.4em;
+  }
+}
+
+@media only screen and (max-width: 430px) {
+  #profile-pic {
+    height: 45em;
+  }
+
+  #first-name {
+    top: 10%;
+    font-size: 3em;
+    left: 0%;
+  }
+
+  #last-name {
+    top: 10%;
+    right: 5%;
+    font-size: 3em;
+  }
+
+  #quant {
+    right: 2%;
+    top: 18%;
+    font-size: 1.7em;
+  }
+}
+
+@media only screen and (max-width: 390px) {
+  #profile-pic {
+    height: 40em;
+  }
+
+  #first-name {
+    top: 10%;
+    font-size: 2.7em;
+    left: 0%;
+  }
+
+  #last-name {
+    top: 10%;
+    right: 5%;
+    font-size: 2.7em;
+  }
+
+  #quant {
+    right: 5%;
+    top: 18%;
+    font-size: 1.7em;
+  }
+}
+
+@media only screen and (max-width: 360px) {
+  #profile-pic {
+    height: 37em;
+  }
+
+  #first-name {
+    top: 10%;
+    font-size: 2.2em;
+    left: 10%;
+  }
+
+  #last-name {
+    top: 10%;
+    right: 7%;
+    font-size: 2.2em;
+  }
+
+  #quant {
+    right: 7%;
+    top: 16%;
+    font-size: 1.2em;
+  }
 }

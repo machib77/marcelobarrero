@@ -7,5 +7,3 @@ document.addEventListener('DOMContentLoaded', function () {
     }, 8000);
   });
 });
-
-console.log('javascript in tha house!');

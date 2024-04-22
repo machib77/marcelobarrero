@@ -15,11 +15,6 @@ a {
   color: black !important;
 }
 
-#profile-pic {
-  height: 300px;
-  width: auto;
-}
-
 .messages {
   list-style: none;
   padding: 10px;
@@ -68,12 +63,12 @@ a {
 
 .nav-tab:hover {
   color: white;
-  background: rgba(102, 177, 241, 0.8);
+  background: #768ea3;
 }
 
 .nav-tab.active {
   color: white;
-  background: rgba(102, 177, 241, 0.8);
+  background: #768ea3;
 }
 
 .tab-slider {
@@ -81,7 +76,7 @@ a {
   bottom: 0;
   left: 0;
   height: 6px;
-  background: #66b1f1;
+  background: #768ea3;
   transition: width 0.3s ease, left 0.3s ease;
 }
 
@@ -124,7 +119,7 @@ main {
 }
 
 button {
-  background: rgba(102, 177, 241, 0.8);
+  background: #768ea3;
   color: #fff;
   border: none;
   position: relative;
@@ -138,7 +133,7 @@ button {
 
 button:hover {
   background: #fff;
-  color: rgba(102, 177, 241, 0.8);
+  color: #768ea3;
 }
 button:before,
 button:after {
@@ -148,7 +143,7 @@ button:after {
   right: 0;
   height: 2px;
   width: 0;
-  background: rgba(102, 177, 241, 0.8);
+  background: #768ea3;
   transition: 400ms ease all;
 }
 button:after {

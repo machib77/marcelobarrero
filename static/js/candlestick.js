@@ -5,8 +5,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
   const commonY = 900; // Set a common y value for all candles
 
-  const UP_COLOR = '#7a7d7e'; // Green
-  const DOWN_COLOR = '#6b6d6e'; // Red
+  const UP_COLOR = '#c8bcb0'; // Green
+  const DOWN_COLOR = '#8e8983'; // Red
 
   // function generateRandomWalk(
   //   numCandles,
@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   const candlestickWidth = 40;
   const candlestickGap = 10; // Smaller gap between candles
-  const animationDuration = 50; // In milliseconds
+  const animationDuration = 55; // In milliseconds
 
   let currentCandleIndex = 0;
   let animationStartTime = null;
@@ -223,12 +223,17 @@ document.addEventListener('DOMContentLoaded', function () {
   // Function to set canvas dimensions to match marquee
   function setCanvasSize() {
     // Get the computed width and height of the marquee
-    const marqueeWidth = marquee.offsetWidth;
-    const marqueeHeight = marquee.offsetHeight;
+    // const marqueeWidth = marquee.offsetWidth;
+    // const marqueeHeight = marquee.offsetHeight;
 
     // Set the canvas width and height to match the marquee
-    canvas.width = marqueeWidth;
-    canvas.height = marqueeHeight * 2.4;
+    if (window.innerWidth <= 1880) {
+      canvas.width = window.innerWidth * 0.97;
+      canvas.height = window.innerHeight * 0.9;
+    } else {
+      canvas.width = window.innerWidth * 0.99;
+      canvas.height = window.innerHeight * 0.75;
+    }
   }
 
   // Call the function once to set initial dimensions
