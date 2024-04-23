@@ -1,0 +1,204 @@
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Marcellus&display=swap');
+
+@font-face {
+  font-family: 'NeueHaasDisplayBlack';
+  font-style: normal;
+  font-weight: normal;
+  src: local('NeueHaasDisplayBlack'),
+    url('/static/fonts/NeueHaasDisplayBlack.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'NeueHaasDisplayLight';
+  font-style: normal;
+  font-weight: normal;
+  src: local('NeueHaasDisplayLight'),
+    url('/static/fonts/NeueHaasDisplayLight.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'NeueHaasDisplayLightItalic';
+  font-style: normal;
+  font-weight: normal;
+  src: local('NeueHaasDisplayLightItalic'),
+    url('/static/fonts/NeueHaasDisplayLightItalic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'NeueHaasDisplayMedium';
+  font-style: normal;
+  font-weight: normal;
+  src: local('NeueHaasDisplayMedium'),
+    url('/static/fonts/NeueHaasDisplayMedium.ttf') format('truetype');
+}
+
+#spot-rates-form label {
+  display: inline-block;
+  width: 2em;
+  margin-bottom: 0.5em;
+}
+
+#spot-rates-form input {
+  width: 4em;
+}
+
+#discount-trigger,
+#fix-leg-trigger,
+#float-leg-trigger,
+#fix-leg-pv-trigger,
+#float-leg-pv-trigger,
+#mtm-trigger {
+  display: none;
+}
+
+#fix-leg-container table,
+#float-leg-container table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#chart-container,
+#discount-container {
+  width: 100% !important;
+}
+
+td {
+  padding-left: 1em;
+  padding-right: 1em;
+  white-space: nowrap;
+}
+
+#fix-leg-pv-container,
+#float-leg-pv-container,
+#mtm-container {
+  color: #7f49a3;
+  background-color: #141414;
+  display: inline;
+}
+
+.sum-title {
+  color: #7f49a3;
+  text-align: right;
+}
+
+#input-rates-form input {
+  background-color: #ff9c29;
+  font-family: 'Courier Prime', monospace;
+}
+
+#swap-input-form {
+  padding-top: 1em;
+  padding-bottom: 2em;
+}
+
+#input-rates-form label {
+  color: #ff9c29;
+}
+
+body {
+  background-color: #141414;
+  font-family: 'Courier Prime', monospace;
+  color: white;
+}
+
+.top-title h1 {
+  color: white;
+  font-family: 'NeueHaasDisplayMedium';
+}
+
+.top-title h2 {
+  color: white;
+  font-family: 'NeueHaasDisplayLightItalic';
+}
+
+#cashflows-title h3 {
+  color: white;
+  font-family: arial, sans-serif;
+  text-align: center;
+  padding-top: 2em;
+  font-weight: 600;
+  font-size: 20px;
+  white-space: pre;
+}
+
+#download-df-button {
+  background-color: #ff9c29;
+  color: #141414;
+  font-family: 'Courier Prime', monospace;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  font-weight: bold;
+}
+
+#download-df-button:hover {
+  background-color: #ffc37e;
+  border-color: #ff9c29;
+}
+
+.grid-container {
+  display: grid !important;
+  grid-template-columns: auto 1fr !important;
+  gap: 20px;
+}
+
+.input-container {
+  max-width: 7em;
+  grid-column: 1 / 2 !important;
+}
+
+.charts-container {
+  grid-column: 2 / 3 !important;
+  width: 100% !important;
+}
+
+#download-df-container {
+  text-align: left;
+  padding-left: 3em;
+}
+
+.cashflows-container {
+  display: grid !important;
+  grid-template-columns: minmax(auto, 1.6em) 1fr minmax(auto, 1.5em);
+  gap: 20px;
+}
+
+.cashflows-left-space {
+  grid-column: 1 / 2;
+}
+
+.cashflows-content-container {
+  grid-column: 2 / 3;
+}
+
+.cashflows-right-space {
+  grid-column: 3 / 4;
+}
+
+#sum-mtm {
+  font-weight: bold;
+}
+
+@media only screen and (max-width: 480px) {
+  body {
+    font-size: 10px;
+  }
+  .grid-container {
+    gap: 0px;
+  }
+  #swap-input-form {
+    width: 100%;
+  }
+  #notional {
+    width: 6em;
+  }
+  #fix-rate {
+    width: 4em;
+  }
+}
+
+footer {
+  text-align: center;
+}
