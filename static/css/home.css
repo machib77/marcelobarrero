@@ -1,12 +1,7 @@
 .home-container {
-  max-width: 600px; /* Adjust as needed */
+  max-width: 600px;
   margin: 0 auto;
   padding: 20px;
-  /* background-color: #999d9e; */
-}
-
-p {
-  padding: 2em;
 }
 
 main {
@@ -14,7 +9,7 @@ main {
 }
 
 #profile-pic {
-  height: 55em;
+  height: 85vh;
   width: auto;
   position: absolute;
   bottom: 0;
@@ -25,53 +20,30 @@ main {
 #quant {
   color: white;
   position: absolute;
-  right: 20%;
+  right: 30%;
   top: 40%;
-  font-size: 4em;
+  font-size: 6vh;
+  transform: translateX(50%);
 }
-
-.marquee {
-  width: 99%;
-  white-space: nowrap;
-  overflow: hidden;
-  position: relative;
-  text-align: center;
-  padding-bottom: 2em;
-}
-
-.marquee span {
-  display: inline-block;
-  animation: marquee 3.1s linear;
-  width: 99%;
-  font-size: 8em;
-  color: white;
-}
-
-/* @keyframes marquee {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(0);
-  }
-} */
 
 #first-name {
   position: absolute;
   top: 20%;
-  left: 14%;
-  padding-left: 1em;
-  font-size: 8em;
+  left: 34%;
+  /* padding-left: 1em; */
+  font-size: 12vh;
   color: white;
+  transform: translateX(-50%);
 }
 
 #last-name {
   position: absolute;
   top: 20%;
-  right: 20%;
-  padding-left: 1em;
-  font-size: 8em;
+  right: 32%;
+  /* padding-left: 1em; */
+  font-size: 12vh;
   color: white;
+  transform: translateX(50%);
 }
 
 #candlestick {
@@ -158,6 +130,67 @@ main {
 }
 
 @media only screen and (max-width: 1880px) {
+  #first-name {
+    left: 30%;
+  }
+
+  #last-name {
+    right: 29%;
+  }
+
+  #quant {
+    top: 33%;
+    right: 28%;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  #first-name {
+    left: 25%;
+    font-size: 10vh;
+  }
+
+  #last-name {
+    right: 24%;
+    font-size: 10vh;
+  }
+
+  #quant {
+    top: 33%;
+    right: 24%;
+    font-size: 5vh;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  #profile-pic {
+    height: 75vh;
+  }
+
+  #first-name {
+    top: 7%;
+    left: 50%;
+    font-size: 7vh;
+  }
+
+  #last-name {
+    top: 13%;
+    right: 50%;
+    font-size: 7vh;
+  }
+
+  #quant {
+    top: 22%;
+    right: 24%;
+    font-size: 3vh;
+  }
+
+  .download-cv-shape {
+    top: 60%;
+  }
+}
+
+/* @media only screen and (max-width: 1880px) {
   #profile-pic {
     height: 42em;
   }
@@ -184,9 +217,9 @@ main {
     height: 500px;
     padding-bottom: 1em;
   }
-}
+} */
 
-@media only screen and (max-width: 932px) {
+/* @media only screen and (max-width: 932px) {
   #profile-pic {
     height: 42em;
   }
@@ -218,15 +251,15 @@ main {
   }
 
   .download-cv-shape {
-    width: 11em; /* Width of the rectangle */
-    height: 6em; /* Height of the rectangle */
-    background-color: #1c1d20; /* Background color of the rectangle */
+    width: 11em; 
+    height: 6em; 
+    background-color: #1c1d20; 
     position: relative;
     top: 60%;
   }
-}
+} */
 
-@media only screen and (max-width: 768px) {
+/* @media only screen and (max-width: 768px) {
   #profile-pic {
     height: 54em;
   }
@@ -248,9 +281,9 @@ main {
     top: 33%;
     font-size: 2.4em;
   }
-}
+} */
 
-@media only screen and (max-width: 430px) {
+/* @media only screen and (max-width: 430px) {
   #profile-pic {
     height: 45em;
   }
@@ -272,9 +305,9 @@ main {
     top: 18%;
     font-size: 1.7em;
   }
-}
+} */
 
-@media only screen and (max-width: 390px) {
+/* @media only screen and (max-width: 390px) {
   #profile-pic {
     height: 40em;
   }
@@ -296,9 +329,9 @@ main {
     top: 18%;
     font-size: 1.7em;
   }
-}
+} */
 
-@media only screen and (max-width: 360px) {
+/* @media only screen and (max-width: 360px) {
   #profile-pic {
     height: 37em;
   }
@@ -320,4 +353,34 @@ main {
     top: 16%;
     font-size: 1.2em;
   }
+} */
+
+/* .marquee {
+  width: 99vw;
+  white-space: nowrap;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  padding-bottom: 2em;
 }
+
+.marquee span {
+  display: inline-block;
+  animation: marquee 3.1s linear;
+  width: 99vw;
+  font-size: 8em;
+  color: white;
+} */
+
+/* @keyframes marquee {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+} */
+
+/* p {
+  padding: 2em;
+} */
