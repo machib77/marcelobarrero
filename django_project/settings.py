@@ -141,8 +141,7 @@ EMAIL_HOST = "smtp-mail.outlook.com"
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = "marcelo.barrero@live.com"
-EMAIL_HOST_PASSWORD = "pav3m3ntch1l1$"
-# os.environ.get("GMAIL_APP_PASSWORD")  # Recommended to use environment variables
+EMAIL_HOST_PASSWORD = env.str("MAIL_PASSWORD")
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
