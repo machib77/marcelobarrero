@@ -160,23 +160,23 @@ main {
   }
 
   #profile-pic {
-    height: 70vh;
+    height: 65vh;
   }
 
   #first-name {
-    top: 9%;
+    top: 11%;
     left: 50%;
     font-size: 6vh;
   }
 
   #last-name {
-    top: 15%;
+    top: 17%;
     right: 50%;
     font-size: 6vh;
   }
 
   #quant {
-    top: 24%;
+    top: 26%;
     right: 24%;
     font-size: 3vh;
   }
