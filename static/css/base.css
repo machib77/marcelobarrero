@@ -42,7 +42,7 @@ a {
   flex-direction: row;
   position: fixed;
   width: 100vw;
-  height: 70px;
+  height: 8vh;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   background: #fff;
   z-index: 10;
@@ -50,6 +50,7 @@ a {
 }
 
 .nav-tab {
+  width: 25%;
   text-decoration: none;
   display: flex;
   justify-content: center;
