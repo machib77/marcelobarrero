@@ -1,20 +1,9 @@
-.home-container {
-  max-width: 600px; /* Adjust as needed */
-  margin: 0 auto;
-  padding: 20px;
-  /* background-color: #999d9e; */
-}
-
-p {
-  padding: 2em;
-}
-
 main {
   background-color: #4d5860;
 }
 
 #profile-pic {
-  height: 55em;
+  height: 85vh;
   width: auto;
   position: absolute;
   bottom: 0;
@@ -25,61 +14,36 @@ main {
 #quant {
   color: white;
   position: absolute;
-  right: 20%;
+  right: 30%;
   top: 40%;
-  font-size: 4em;
+  font-size: 6vh;
+  transform: translateX(50%);
 }
-
-.marquee {
-  width: 99%;
-  white-space: nowrap;
-  overflow: hidden;
-  position: relative;
-  text-align: center;
-  padding-bottom: 2em;
-}
-
-.marquee span {
-  display: inline-block;
-  animation: marquee 3.1s linear;
-  width: 99%;
-  font-size: 8em;
-  color: white;
-}
-
-/* @keyframes marquee {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(0);
-  }
-} */
 
 #first-name {
   position: absolute;
   top: 20%;
-  left: 14%;
-  padding-left: 1em;
-  font-size: 8em;
+  left: 34%;
+  /* padding-left: 1em; */
+  font-size: 12vh;
   color: white;
+  transform: translateX(-50%);
 }
 
 #last-name {
   position: absolute;
   top: 20%;
-  right: 20%;
-  padding-left: 1em;
-  font-size: 8em;
+  right: 32%;
+  /* padding-left: 1em; */
+  font-size: 12vh;
   color: white;
+  transform: translateX(50%);
 }
 
 #candlestick {
   position: absolute;
   bottom: 0;
   padding-left: 1em;
-
-  /* padding-bottom: 5em; */
 }
 
 .download-cv-shape {
@@ -158,166 +122,62 @@ main {
 }
 
 @media only screen and (max-width: 1880px) {
-  #profile-pic {
-    height: 42em;
-  }
-
   #first-name {
-    top: 25%;
-    left: 10%;
-    font-size: 6em;
+    left: 30%;
   }
 
   #last-name {
-    top: 25%;
-    right: 17%;
-    font-size: 6em;
+    right: 29%;
   }
 
   #quant {
-    right: 17%;
-    top: 43%;
-    font-size: 2.7em;
-  }
-
-  #waves {
-    height: 500px;
-    padding-bottom: 1em;
+    top: 33%;
+    right: 28%;
   }
 }
 
-@media only screen and (max-width: 932px) {
-  #profile-pic {
-    height: 42em;
-  }
-
+@media only screen and (max-width: 1200px) {
   #first-name {
-    top: 7%;
-    font-size: 4em;
-    left: 0%;
-    justify-content: center;
+    left: 25%;
+    font-size: 10vh;
   }
 
   #last-name {
-    top: 14%;
-    right: 10%;
-    justify-content: center;
-    font-size: 4em;
+    right: 24%;
+    font-size: 10vh;
+  }
+
+  #quant {
+    top: 33%;
+    right: 24%;
+    font-size: 5vh;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .download-cv-shape {
+    top: 60%;
+  }
+
+  #profile-pic {
+    height: 70vh;
+  }
+
+  #first-name {
+    top: 9%;
+    left: 50%;
+    font-size: 6vh;
+  }
+
+  #last-name {
+    top: 15%;
+    right: 50%;
+    font-size: 6vh;
   }
 
   #quant {
     top: 24%;
-    right: 30%;
-    font-size: 1.5em;
-    justify-content: center;
-  }
-
-  #waves {
-    height: 700px;
-    padding-bottom: 1em;
-  }
-
-  .download-cv-shape {
-    width: 11em; /* Width of the rectangle */
-    height: 6em; /* Height of the rectangle */
-    background-color: #1c1d20; /* Background color of the rectangle */
-    position: relative;
-    top: 60%;
-  }
-}
-
-@media only screen and (max-width: 768px) {
-  #profile-pic {
-    height: 54em;
-  }
-
-  #first-name {
-    top: 20%;
-    font-size: 5em;
-    left: -8%;
-  }
-
-  #last-name {
-    top: 20%;
-    right: 1%;
-    font-size: 5em;
-  }
-
-  #quant {
-    right: 2%;
-    top: 33%;
-    font-size: 2.4em;
-  }
-}
-
-@media only screen and (max-width: 430px) {
-  #profile-pic {
-    height: 45em;
-  }
-
-  #first-name {
-    top: 10%;
-    font-size: 3em;
-    left: 0%;
-  }
-
-  #last-name {
-    top: 10%;
-    right: 5%;
-    font-size: 3em;
-  }
-
-  #quant {
-    right: 2%;
-    top: 18%;
-    font-size: 1.7em;
-  }
-}
-
-@media only screen and (max-width: 390px) {
-  #profile-pic {
-    height: 40em;
-  }
-
-  #first-name {
-    top: 10%;
-    font-size: 2.7em;
-    left: 0%;
-  }
-
-  #last-name {
-    top: 10%;
-    right: 5%;
-    font-size: 2.7em;
-  }
-
-  #quant {
-    right: 5%;
-    top: 18%;
-    font-size: 1.7em;
-  }
-}
-
-@media only screen and (max-width: 360px) {
-  #profile-pic {
-    height: 37em;
-  }
-
-  #first-name {
-    top: 10%;
-    font-size: 2.2em;
-    left: 10%;
-  }
-
-  #last-name {
-    top: 10%;
-    right: 7%;
-    font-size: 2.2em;
-  }
-
-  #quant {
-    right: 7%;
-    top: 16%;
-    font-size: 1.2em;
+    right: 24%;
+    font-size: 3vh;
   }
 }

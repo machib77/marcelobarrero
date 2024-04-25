@@ -227,9 +227,12 @@ document.addEventListener('DOMContentLoaded', function () {
     // const marqueeHeight = marquee.offsetHeight;
 
     // Set the canvas width and height to match the marquee
-    if (window.innerWidth <= 1880) {
+    if (window.innerWidth <= 1880 && window.innerWidth > 400) {
       canvas.width = window.innerWidth * 0.97;
-      canvas.height = window.innerHeight * 0.9;
+      canvas.height = window.innerHeight * 0.98;
+    } else if (window.innerWidth <= 400) {
+      canvas.width = window.innerWidth * 0.97;
+      canvas.height = window.innerHeight * 1.3;
     } else {
       canvas.width = window.innerWidth * 0.99;
       canvas.height = window.innerHeight * 0.75;
