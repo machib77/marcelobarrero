@@ -37,8 +37,8 @@ class ContactView(FormView):
         send_mail(
             formatted_subject,
             formatted_message,
-            "marcelo.barrero@live.com",
-            ["marcelo.barrero@live.com"],
+            "marcelobarreroc@gmail.com",
+            ["marcelo.barrero@proton.me"],
             fail_silently=False,
         )
 
