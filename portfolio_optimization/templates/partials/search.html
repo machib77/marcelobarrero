@@ -1,0 +1,13 @@
+<div>
+  {% csrf_token %}
+  <input
+    type="text"
+    hx-post="{% url 'search-ticker' %}"
+    hx-target="#results"
+    hx-trigger="keyup changed delay:500ms"
+    name="search"
+    placeholder="Search tickers..."
+    hx-headers="{ 'X-CSRFToken': '{{ csrf_token }}' }"
+  />
+</div>
+<div id="results"></div>
