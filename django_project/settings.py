@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     # Local
     "pages.apps.PagesConfig",
     "swap_manager.apps.SwapManagerConfig",
+    "portfolio_optimization.apps.PortfolioOptimizationConfig",
 ]
 
 MIDDLEWARE = [
