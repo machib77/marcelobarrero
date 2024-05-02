@@ -24,7 +24,7 @@ from .python_scripts.table_style import (
     format_number,
 )
 
-# Llamo a mi diccionario con los defaults.
+# Llamo a mi diccionario con los defaults-.
 curve_defaults = curve_defaults
 swap_defaults = swap_defaults
 
