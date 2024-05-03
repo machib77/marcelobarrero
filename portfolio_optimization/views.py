@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
-from portfolio_optimization.models import Ticker, SelectedTicker
+from portfolio_optimization.models import Ticker, SelectedTicker, DateRange
 from django.db.models import Q
 import json
+from django.http import HttpResponse
 
 
 # Create your views here.
@@ -47,3 +48,17 @@ def run_calculations(request):
         print(ticker_symbols)
         context = {"ticker_symbols": ticker_symbols}
         return render(request, "partials/calculation-results.html", context)
+
+
+def update_date_range(request):
+    if request.method == "POST":
+        start_date = request.POST.get("start_date")
+        end_date = request.POST.get("end_date")
+        session_key = request.session.session_key
+
+        date_range, created = DateRange.objects.update_or_create(
+            session_key=session_key,
+            defaults={"start_date": start_date, "end_date": end_date},
+        )
+
+        return HttpResponse(status=200)
