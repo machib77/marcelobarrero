@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
-from portfolio_optimization.models import Ticker
+from portfolio_optimization.models import Ticker, SelectedTicker
 from django.db.models import Q
+import json
 
 
 # Create your views here.
@@ -19,3 +20,16 @@ def search_ticker(request):
     )
     context = {"results": results}
     return render(request, "partials/search-results.html", context)
+
+
+def add_ticker(request):
+    if request.method == "GET":
+        ticker_id = request.GET.get("ticker_id")
+        ticker = Ticker.objects.get(id=ticker_id)
+        session_key = request.session.session_key
+        selected_ticker, created = SelectedTicker.objects.get_or_create(
+            ticker=ticker, session_key=session_key
+        )
+        selected_tickers = SelectedTicker.objects.filter(session_key=session_key)
+        context = {"selected_tickers": selected_tickers}
+        return render(request, "partials/selected_tickers.html", context)

@@ -3,7 +3,14 @@
   {% for ticker in results %}
   <li>
     [{{ticker.index}}] {{ ticker.symbol }}: {{ ticker.company_name}}
-    <span>add</span>
+    <a
+      href="{% url 'add-ticker' %}?ticker_id={{ ticker.id }}"
+      hx-get="{% url 'add-ticker' %}?ticker_id={{ ticker.id }}"
+      hx-target="#selected-tickers"
+      hx-vals="{'ticker_id': '{{ ticker.id }}'}"
+      hx-headers="{ 'X-CSRFToken': '{{ csrf_token }}'}"
+      >Add</a
+    >
   </li>
   {% endfor %}
 </ul>

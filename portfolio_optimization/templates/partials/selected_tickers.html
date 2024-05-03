@@ -1,0 +1,8 @@
+{% for selected_ticker in selected_tickers %}
+<div>
+  <!-- prettier-ignore -->
+  {{ selected_ticker.ticker.symbol }} - {{ selected_ticker.ticker.company_name}}
+</div>
+{% empty %}
+<p>You haven't selected any tickers yet.</p>
+{% endfor %}

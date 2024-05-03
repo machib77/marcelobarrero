@@ -15,6 +15,11 @@
     <h1>Homepage</h1>
     <section>{% include "partials/search.html" %}</section>
 
+    <section>
+      <h2>Your Selected Tickers</h2>
+      <div id="selected-tickers"></div>
+    </section>
+
     <script>
       document.body.addEventListener('htmx:configRequest', event => {
         event.detail.headers['X-CSRFToken'] = '{{ csrf_token }}';
