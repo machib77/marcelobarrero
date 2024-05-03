@@ -13,11 +13,24 @@
   </head>
   <body>
     <h1>Homepage</h1>
+
     <section>{% include "partials/search.html" %}</section>
 
     <section>
       <h2>Your Selected Tickers</h2>
       <div id="selected-tickers"></div>
+    </section>
+
+    <section>
+        <button
+         hx-post="{% url "run-calculations" %}"
+         hx-target="#calculation-results"
+         hx-swap="outerHTML"
+        >Run Calculations</button>
+    </section>
+
+    <section>
+        <div id="calculation-results"></div>
     </section>
 
     <script>

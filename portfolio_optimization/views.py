@@ -37,3 +37,13 @@ def add_ticker(request):
         selected_tickers = SelectedTicker.objects.filter(session_key=session_key)
         context = {"selected_tickers": selected_tickers}
         return render(request, "partials/selected_tickers.html", context)
+
+
+def run_calculations(request):
+    if request.method == "POST":
+        session_key = request.session.session_key
+        selected_tickers = SelectedTicker.objects.filter(session_key=session_key)
+        ticker_symbols = [ticker.ticker.symbol for ticker in selected_tickers]
+        print(ticker_symbols)
+        context = {"ticker_symbols": ticker_symbols}
+        return render(request, "partials/calculation-results.html", context)

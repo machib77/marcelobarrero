@@ -1,0 +1,9 @@
+{% if ticker_symbols %}
+<ul>
+  {% for symbol in ticker_symbols %}
+  <li>{{ symbol }}</li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>No selected tickers.</p>
+{% endif %}
