@@ -9,6 +9,10 @@ import json
 class HomePageView(TemplateView):
     template_name = "portfolio_optimization/po-home.html"
 
+    def get(self, request, *args, **kwargs):
+        request.session.create()
+        return super().get(request, *args, **kwargs)
+
 
 def search_ticker(request):
     search_text = request.POST.get("search")
