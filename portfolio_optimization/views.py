@@ -44,6 +44,9 @@ def run_calculations(request):
     if request.method == "POST":
         session_key = request.session.session_key
         selected_tickers = SelectedTicker.objects.filter(session_key=session_key)
+        date_range = DateRange.objects.get(session_key=session_key)
+        date_list = date_range.get_dates_list()
+        print(date_list)
         ticker_symbols = [ticker.ticker.symbol for ticker in selected_tickers]
         print(ticker_symbols)
         context = {"ticker_symbols": ticker_symbols}

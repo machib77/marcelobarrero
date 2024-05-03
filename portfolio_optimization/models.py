@@ -27,3 +27,6 @@ class DateRange(models.Model):
 
     def __str__(self):
         return f"DateRange for session {self.session_key}"
+
+    def get_dates_list(self):
+        return [self.start_date, self.end_date]
