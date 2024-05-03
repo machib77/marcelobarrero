@@ -36,7 +36,7 @@ def add_ticker(request):
         )
         selected_tickers = SelectedTicker.objects.filter(session_key=session_key)
         context = {"selected_tickers": selected_tickers}
-        return render(request, "partials/selected_tickers.html", context)
+        return render(request, "partials/selected_tickers.html", context)  # type: ignore
 
 
 def run_calculations(request):

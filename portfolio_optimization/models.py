@@ -18,3 +18,12 @@ class SelectedTicker(models.Model):
 
     def __str__(self):
         return self.ticker.symbol
+
+
+class DateRange(models.Model):
+    start_date = models.DateField()
+    end_date = models.DateField()
+    session_key = models.CharField(max_length=40, null=True, blank=True)
+
+    def __str__(self):
+        return f"DateRange for session {self.session_key}"
