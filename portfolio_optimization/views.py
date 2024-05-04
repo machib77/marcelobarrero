@@ -4,6 +4,7 @@ from portfolio_optimization.models import Ticker, SelectedTicker, DateRange
 from django.db.models import Q
 import json
 from django.http import HttpResponse
+from portfolio_optimization.optimize import get_prices
 
 
 # Create your views here.
@@ -40,19 +41,6 @@ def add_ticker(request):
         return render(request, "partials/selected_tickers.html", context)  # type: ignore
 
 
-def run_calculations(request):
-    if request.method == "POST":
-        session_key = request.session.session_key
-        selected_tickers = SelectedTicker.objects.filter(session_key=session_key)
-        date_range = DateRange.objects.get(session_key=session_key)
-        date_list = date_range.get_dates_list()
-        print(date_list)
-        ticker_symbols = [ticker.ticker.symbol for ticker in selected_tickers]
-        print(ticker_symbols)
-        context = {"ticker_symbols": ticker_symbols}
-        return render(request, "partials/calculation-results.html", context)
-
-
 def update_date_range(request):
     if request.method == "POST":
         start_date = request.POST.get("start_date")
@@ -65,3 +53,19 @@ def update_date_range(request):
         )
 
         return HttpResponse(status=200)
+
+
+def run_calculations(request):
+    if request.method == "POST":
+        session_key = request.session.session_key
+        selected_tickers = SelectedTicker.objects.filter(session_key=session_key)
+        date_range = DateRange.objects.get(session_key=session_key)
+        date_list = date_range.get_dates_list()
+        ticker_symbols = [ticker.ticker.symbol for ticker in selected_tickers]
+        print(date_list)
+        print(ticker_symbols)
+        data_head = get_prices(ticker_symbols, date_list)
+        print(data_head)
+
+        context = {"ticker_symbols": ticker_symbols}
+        return render(request, "partials/calculation-results.html", context)
