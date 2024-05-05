@@ -4,7 +4,7 @@ from portfolio_optimization.models import Ticker, SelectedTicker, DateRange
 from django.db.models import Q
 import json
 from django.http import HttpResponse
-from portfolio_optimization.optimize import get_prices
+from portfolio_optimization.optimize import optimize_portfolio
 
 
 # Create your views here.
@@ -64,8 +64,11 @@ def run_calculations(request):
         ticker_symbols = [ticker.ticker.symbol for ticker in selected_tickers]
         print(date_list)
         print(ticker_symbols)
-        data_head = get_prices(ticker_symbols, date_list)
-        print(data_head)
-
-        context = {"ticker_symbols": ticker_symbols}
+        corr_matrix = optimize_portfolio(ticker_symbols, date_list)
+        print(corr_matrix)
+        corr_matrix_html = corr_matrix.to_html()
+        context = {
+            "ticker_symbols": ticker_symbols,
+            "corr_matrix_html": corr_matrix_html,
+        }
         return render(request, "partials/calculation-results.html", context)

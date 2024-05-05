@@ -7,3 +7,13 @@
 {% else %}
 <p>No selected tickers.</p>
 {% endif %}
+
+<!-- For the correlation matrix-->
+{% if corr_matrix_html %}
+<table>
+  {{ corr_matrix_html | safe }}
+  <!-- Use safe filter to render HTML -->
+</table>
+{% else %}
+<p>No correlation matrix available.</p>
+{% endif %}

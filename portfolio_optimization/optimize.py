@@ -4,10 +4,12 @@ import yfinance as yf
 import matplotlib.pyplot as plt
 
 
-def get_prices(ticker_list, date_list):
-    data = pd.DataFrame()
+def optimize_portfolio(ticker_list, date_list):
+    df = pd.DataFrame()
     for ticker in ticker_list:
         stock_data = yf.download(ticker, start=date_list[0], end=date_list[1])
-        data[ticker] = stock_data["Adj Close"]
-    data = data.dropna()
-    return data.head()
+        df[ticker] = stock_data["Adj Close"]
+    df = df.dropna()
+    cov_matrix = df.pct_change().apply(lambda x: np.log(1 + x)).cov()
+    corr_matrix = df.pct_change().apply(lambda x: np.log(1 + x)).corr()
+    return corr_matrix
