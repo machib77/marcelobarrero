@@ -64,11 +64,11 @@ def run_calculations(request):
         ticker_symbols = [ticker.ticker.symbol for ticker in selected_tickers]
         print(date_list)
         print(ticker_symbols)
-        corr_matrix = optimize_portfolio(ticker_symbols, date_list)
-        print(corr_matrix)
-        corr_matrix_html = corr_matrix.to_html()
+        corr_matrix, efficient_frontier = optimize_portfolio(ticker_symbols, date_list)
+
         context = {
             "ticker_symbols": ticker_symbols,
-            "corr_matrix_html": corr_matrix_html,
+            "corr_matrix_html": corr_matrix,
+            "efficient_frontier": efficient_frontier,
         }
         return render(request, "partials/calculation-results.html", context)

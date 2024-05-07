@@ -8,7 +8,7 @@
 <p>No selected tickers.</p>
 {% endif %}
 
-<!-- For the correlation matrix-->
+<!-- For the correlation matrix -->
 {% if corr_matrix_html %}
 <table>
   {{ corr_matrix_html | safe }}
@@ -16,4 +16,13 @@
 </table>
 {% else %}
 <p>No correlation matrix available.</p>
+{% endif %}
+
+<!-- For the efficient frontier -->
+{% if efficient_frontier %}
+<!-- -->
+{{ efficient_frontier | safe }}
+<!-- -->
+{% else %}
+<p>No efficient frontier available</p>
 {% endif %}
