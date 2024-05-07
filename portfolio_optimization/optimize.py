@@ -1,6 +1,11 @@
 import numpy as np
 import pandas as pd
 import yfinance as yf
+
+import matplotlib
+
+matplotlib.use("Agg")
+
 import matplotlib.pyplot as plt
 import mpld3
 
@@ -53,6 +58,14 @@ def optimize_portfolio(ticker_list, date_list):
 
     portfolios = pd.DataFrame(data)
 
+    # Portfolio eficiente de volatilidad mínima
+    min_vol_port = portfolios.iloc[portfolios["Volatility"].idxmin()]  # type: ignore
+
+    # Portfolio óptimo
+    rf = 0.01  # Por mientras como ejemplo
+    optimal_risky_port = portfolios.iloc[((portfolios["Returns"] - rf) / portfolios["Volatility"]).idxmax()]  # type: ignore
+    print(optimal_risky_port)
+
     # Hago el plot de la frontera eficiente
     fig, ax = plt.subplots()
     scatter = ax.scatter(
@@ -62,6 +75,16 @@ def optimize_portfolio(ticker_list, date_list):
     ax.set_xlabel("Volatility")
     ax.set_ylabel("Returns")
     ax.set_title("Portfolio Returns vs. Volatility")
+
+    # Plot de los puntos para portfolio de varianza mínima y el óptimo
+    ax.scatter(min_vol_port.iloc[1], min_vol_port.iloc[0], color="r", marker="*", s=500)
+    ax.scatter(
+        optimal_risky_port.iloc[1],
+        optimal_risky_port.iloc[0],
+        color="g",
+        marker="*",
+        s=500,
+    )
 
     corr_matrix_html = corr_matrix.to_html()
     efficient_frontier = mpld3.fig_to_html(fig)
