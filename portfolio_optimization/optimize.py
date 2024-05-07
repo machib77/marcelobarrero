@@ -8,6 +8,7 @@ matplotlib.use("Agg")
 
 import matplotlib.pyplot as plt
 import mpld3
+from matplotlib.patches import Circle
 
 
 def optimize_portfolio(ticker_list, date_list):
@@ -64,7 +65,6 @@ def optimize_portfolio(ticker_list, date_list):
     # Portfolio óptimo
     rf = 0.01  # Por mientras como ejemplo
     optimal_risky_port = portfolios.iloc[((portfolios["Returns"] - rf) / portfolios["Volatility"]).idxmax()]  # type: ignore
-    print(optimal_risky_port)
 
     # Hago el plot de la frontera eficiente
     fig, ax = plt.subplots()
@@ -89,4 +89,27 @@ def optimize_portfolio(ticker_list, date_list):
     corr_matrix_html = corr_matrix.to_html()
     efficient_frontier = mpld3.fig_to_html(fig)
 
-    return corr_matrix_html, efficient_frontier
+    # Hago un donnut plot para min_vol_port y para optimal_risky_port
+    fig_donuts, axes = plt.subplots(1, 2, figsize=(10, 5))
+
+    min_vol_port_filtered = min_vol_port.drop(["Returns", "Volatility"])
+    min_vol_labels = min_vol_port_filtered.index
+    min_vol_sizes = min_vol_port_filtered.values
+    axes[0].pie(min_vol_sizes, labels=min_vol_labels, autopct="%1.1f%%", startangle=90)
+    axes[0].axis("equal")
+    axes[0].set_title("Min Volatility Portfolio")
+    axes[0].add_artist(Circle((0, 0), 0.7, color="white"))
+
+    optimal_risky_port_filtered = optimal_risky_port.drop(["Returns", "Volatility"])
+    opt_risky_labels = optimal_risky_port_filtered.index
+    opt_risky_sizes = optimal_risky_port_filtered.values
+    axes[1].pie(
+        opt_risky_sizes, labels=opt_risky_labels, autopct="%1.1f%%", startangle=90
+    )
+    axes[1].axis("equal")
+    axes[1].set_title("Optimal Risky Portfolio")
+    axes[1].add_artist(Circle((0, 0), 0.7, color="white"))
+
+    fig_donuts_html = mpld3.fig_to_html(fig_donuts)
+
+    return corr_matrix_html, efficient_frontier, fig_donuts_html

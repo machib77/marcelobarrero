@@ -26,3 +26,12 @@
 {% else %}
 <p>No efficient frontier available</p>
 {% endif %}
+
+<!-- For fig_donuts -->
+{% if fig_donuts %}
+<!-- -->
+{{ fig_donuts | safe }}
+<!-- -->
+{% else %}
+<p>No summary available</p>
+{% endif %}
