@@ -64,7 +64,7 @@ def run_calculations(request):
         ticker_symbols = [ticker.ticker.symbol for ticker in selected_tickers]
         print(date_list)
         print(ticker_symbols)
-        corr_matrix, efficient_frontier, fig_donuts = optimize_portfolio(
+        corr_matrix, efficient_frontier, fig_min, fig_opt = optimize_portfolio(
             ticker_symbols, date_list
         )
 
@@ -72,6 +72,7 @@ def run_calculations(request):
             "ticker_symbols": ticker_symbols,
             "corr_matrix_html": corr_matrix,
             "efficient_frontier": efficient_frontier,
-            "fig_donuts": fig_donuts,
+            "fig_min": fig_min,
+            "fig_opt": fig_opt,
         }
         return render(request, "partials/calculation-results.html", context)

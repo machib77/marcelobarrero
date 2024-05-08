@@ -27,11 +27,20 @@
 <p>No efficient frontier available</p>
 {% endif %}
 
-<!-- For fig_donuts -->
-{% if fig_donuts %}
+<!-- For fig_min -->
+{% if fig_min %}
 <!-- -->
-{{ fig_donuts | safe }}
+{{ fig_min | safe }}
 <!-- -->
 {% else %}
-<p>No summary available</p>
+<p>No summary available for min vol portfolio.</p>
+{% endif %}
+
+<!-- For fig_min -->
+{% if fig_opt %}
+<!-- -->
+{{ fig_opt | safe }}
+<!-- -->
+{% else %}
+<p>No summary available for optimal risky portfolio.</p>
 {% endif %}
