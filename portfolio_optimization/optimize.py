@@ -40,10 +40,45 @@ def efficient_frontier_plot(portfolios, min_vol_port, optimal_risky_port):
 
 def donut_plot(portfolio, title):
     portfolio_filtered = portfolio.drop(["Returns", "Volatility"], axis="index")
+    subtitle = f"Expected Return: {portfolio.Returns*100:.1f}%, Volatility: {portfolio.Volatility*100:.1f}%"
     labels = portfolio_filtered.index
     values = portfolio_filtered.values
 
-    fig = px.pie(values=values, names=labels, title=title, hole=0.3)
+    hover_template = "<b>Ticker</b>: %{label}<br>" + "<b>Weight</b>: %{value:.1f}%<br>"
+
+    fig = px.pie(
+        values=values,
+        names=labels,
+        hover_name=labels,
+        title=title,
+        hole=0.3,
+    )
+
+    fig.update_traces(hovertemplate=hover_template, values=[x * 100 for x in values])
+
+    fig.update_layout(
+        title={
+            "text": title,
+            "y": 0.95,
+            "x": 0.5,
+            "xanchor": "center",
+            "yanchor": "top",
+        },
+        title_font_size=20,
+        font_size=14,
+        annotations=[
+            dict(
+                text=subtitle,
+                showarrow=False,
+                xref="paper",
+                yref="paper",
+                x=0.5,
+                y=1.2,
+                xanchor="center",
+                yanchor="top",
+            )
+        ],
+    )
 
     html_str = pyo.plot(fig, output_type="div", include_plotlyjs=False)
 
