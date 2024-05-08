@@ -1,4 +1,4 @@
-{% if ticker_symbols %}
+{% comment %} {% if ticker_symbols %}
 <ul>
   {% for symbol in ticker_symbols %}
   <li>{{ symbol }}</li>
@@ -6,7 +6,7 @@
 </ul>
 {% else %}
 <p>No selected tickers.</p>
-{% endif %}
+{% endif %} {% endcomment %}
 
 <!-- For the correlation matrix -->
 {% if corr_matrix_html %}
