@@ -8,6 +8,13 @@
 <div>
   <!-- prettier-ignore -->
   {{ selected_ticker.ticker.symbol }} - {{ selected_ticker.ticker.company_name}}
+  <a 
+  href="{% url "remove-ticker" %}?ticker_id={{ selected_ticker.id }}"
+  hx-get="{% url "remove-ticker" %}?ticker_id={{ selected_ticker.id }}"
+  hx-target="#selected-tickers"
+  hx-vals="{'ticker_id': '{{ selected_ticker.id }}'}"
+  hx-headers="{ 'X-CSRFToken': '{{ csrf_token }}'}"
+  >Remove</a>
 </div>
 {% empty %}
 <p>You haven't selected any tickers yet.</p>

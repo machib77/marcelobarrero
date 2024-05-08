@@ -6,6 +6,7 @@ import json
 from django.http import HttpResponse
 from portfolio_optimization.optimize import optimize_portfolio
 from django.contrib import messages
+from django.shortcuts import get_object_or_404
 
 
 # Create your views here.
@@ -55,6 +56,18 @@ def add_ticker(request):
         selected_tickers = SelectedTicker.objects.filter(session_key=session_key)
         context = {"selected_tickers": selected_tickers}
         return render(request, "partials/selected_tickers.html", context)  # type: ignore
+
+
+def remove_ticker(request):
+    if request.method == "GET":
+        ticker_id = request.GET.get("ticker_id")
+        selected_ticker = get_object_or_404(SelectedTicker, id=ticker_id)
+        selected_ticker.delete()
+
+        session_key = request.session.session_key
+        selected_tickers = SelectedTicker.objects.filter(session_key=session_key)
+        context = {"selected_tickers": selected_tickers}
+        return render(request, "partials/selected_tickers.html", context)
 
 
 def update_date_range(request):
