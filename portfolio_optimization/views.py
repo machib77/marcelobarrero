@@ -5,6 +5,7 @@ from django.db.models import Q
 import json
 from django.http import HttpResponse
 from portfolio_optimization.optimize import optimize_portfolio
+from django.contrib import messages
 
 
 # Create your views here.
@@ -33,6 +34,17 @@ def add_ticker(request):
         ticker_id = request.GET.get("ticker_id")
         ticker = Ticker.objects.get(id=ticker_id)
         session_key = request.session.session_key
+
+        selected_tickers_count = SelectedTicker.objects.filter(
+            session_key=session_key
+        ).count()
+
+        if selected_tickers_count >= 10:
+            messages.error(request, "You can only select up to 10 tickers.")
+            selected_tickers = SelectedTicker.objects.filter(session_key=session_key)
+            context = {"selected_tickers": selected_tickers}
+            return render(request, "partials/selected_tickers.html", context)
+
         selected_ticker, created = SelectedTicker.objects.get_or_create(
             ticker=ticker, session_key=session_key
         )
