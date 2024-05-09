@@ -29,9 +29,11 @@
 
     <section>
         <button
+         id="run-calculations-btn"
          hx-post="{% url "run-calculations" %}"
          hx-target="#calculation-results"
          hx-swap="outerHTML"
+         disabled
         >Run Calculations</button>
     </section>
 

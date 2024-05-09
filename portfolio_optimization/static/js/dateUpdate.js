@@ -1,5 +1,4 @@
 'use strict';
-console.log('java script here!!!!pepe');
 
 document.getElementById('start_date').addEventListener('change', function () {
   updateDateRange();
@@ -9,7 +8,15 @@ document.getElementById('end_date').addEventListener('change', function () {
   updateDateRange();
 });
 
+let selectedTickersDiv = document.getElementById('selected-tickers');
+selectedTickersDiv.addEventListener('click', handleRemoveBtnClick);
+
 function updateDateRange() {
+  let runCalculationsBtn = document.getElementById('run-calculations-btn');
+  let selectedTickersDiv = document.getElementById('selected-tickers');
+
+  let selectedTickers = selectedTickersDiv.querySelectorAll('.ticker-item');
+
   let startDate = document.getElementById('start_date').value;
   let endDate = document.getElementById('end_date').value;
 
@@ -32,4 +39,19 @@ function updateDateRange() {
       'X-CSRFToken': csrfToken,
     },
   });
+
+  if (selectedTickers.length >= 3 && endDate > startDate) {
+    console.log('condiciones se cumplen');
+    runCalculationsBtn.disabled = false;
+  } else {
+    runCalculationsBtn.disabled = true;
+    console.log('condiciones no se cumplen');
+  }
+}
+
+function handleRemoveBtnClick(event) {
+  if (event.target.classList.contains('remove-btn')) {
+    updateDateRange();
+    console.log('se pinchó algún botón remove');
+  }
 }

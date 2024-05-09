@@ -5,10 +5,11 @@
 
 <!-- show selected tickers -->
 {% for selected_ticker in selected_tickers %}
-<div>
+<div class="ticker-item">
   <!-- prettier-ignore -->
   {{ selected_ticker.ticker.symbol }} - {{ selected_ticker.ticker.company_name}}
   <a 
+  class="remove-btn"
   href="{% url "remove-ticker" %}?ticker_id={{ selected_ticker.id }}"
   hx-get="{% url "remove-ticker" %}?ticker_id={{ selected_ticker.id }}"
   hx-target="#selected-tickers"
