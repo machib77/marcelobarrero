@@ -72,7 +72,7 @@ function logChanges() {
   const diffInDays = Math.abs((endDate - startDate) / (1000 * 60 * 60 * 24));
 
   if (
-    selectedTickers >= 2 &&
+    selectedTickers >= 3 &&
     endDate > startDate &&
     startDateYear >= 2000 &&
     endDateYear >= 2000 &&
@@ -85,3 +85,21 @@ function logChanges() {
     runCalculationsBtn.disabled = true;
   }
 }
+
+window.addEventListener('DOMContentLoaded', function () {
+  const today = new Date();
+  const fiveYearsAgo = new Date(
+    today.getFullYear() - 5,
+    today.getMonth(),
+    today.getDate()
+  );
+
+  const endDateInput = document.getElementById('end_date');
+  const startDateInput = document.getElementById('start_date');
+
+  endDateInput.value = today.toISOString().split('T')[0];
+  startDateInput.value = fiveYearsAgo.toISOString().split('T')[0];
+
+  updateDateRange();
+  logChanges();
+});
