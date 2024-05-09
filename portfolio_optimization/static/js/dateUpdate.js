@@ -53,3 +53,21 @@ function checkButtonState(
     runCalculationsBtn.disabled = true;
   }
 }
+
+// Create a new MutationObserver instance
+const observer = new MutationObserver(mutations => {
+  mutations.forEach(mutation => {
+    if (mutation.type === 'childList') {
+      const selectedTickers = document.querySelectorAll(
+        '#selected-tickers .ticker-item'
+      );
+      console.log(
+        `Number of selected tickers after the "Add" button click: ${selectedTickers.length}`
+      );
+    }
+  });
+});
+
+// Observe changes to the 'selected-tickers' div
+const selectedTickersDiv = document.getElementById('selected-tickers');
+observer.observe(selectedTickersDiv, { childList: true });

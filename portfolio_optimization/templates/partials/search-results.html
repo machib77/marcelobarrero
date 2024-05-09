@@ -4,6 +4,7 @@
   <li>
     [{{ticker.index}}] {{ ticker.symbol }}: {{ ticker.company_name}}
     <a
+      class="add-ticker-btn"
       href="{% url 'add-ticker' %}?ticker_id={{ ticker.id }}"
       hx-get="{% url 'add-ticker' %}?ticker_id={{ ticker.id }}"
       hx-target="#selected-tickers"
