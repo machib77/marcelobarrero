@@ -8,14 +8,9 @@ document.getElementById('end_date').addEventListener('change', function () {
   updateDateRange();
 });
 
-let selectedTickersDiv = document.getElementById('selected-tickers');
-selectedTickersDiv.addEventListener('click', handleRemoveBtnClick);
-
 function updateDateRange() {
   let runCalculationsBtn = document.getElementById('run-calculations-btn');
   let selectedTickersDiv = document.getElementById('selected-tickers');
-
-  let selectedTickers = selectedTickersDiv.querySelectorAll('.ticker-item');
 
   let startDate = document.getElementById('start_date').value;
   let endDate = document.getElementById('end_date').value;
@@ -38,20 +33,23 @@ function updateDateRange() {
     headers: {
       'X-CSRFToken': csrfToken,
     },
+  }).then(html => {
+    let selectedTickers = selectedTickersDiv.querySelectorAll('.ticker-item');
+    console.log(`Number of selected tickers: ${selectedTickers.length}`);
+    console.log(`Start: ${startDate}; End: ${endDate}`);
+    checkButtonState(runCalculationsBtn, selectedTickers, endDate, startDate);
   });
+}
 
+function checkButtonState(
+  runCalculationsBtn,
+  selectedTickers,
+  endDate,
+  startDate
+) {
   if (selectedTickers.length >= 3 && endDate > startDate) {
-    console.log('condiciones se cumplen');
     runCalculationsBtn.disabled = false;
   } else {
     runCalculationsBtn.disabled = true;
-    console.log('condiciones no se cumplen');
-  }
-}
-
-function handleRemoveBtnClick(event) {
-  if (event.target.classList.contains('remove-btn')) {
-    updateDateRange();
-    console.log('se pinchó algún botón remove');
   }
 }
