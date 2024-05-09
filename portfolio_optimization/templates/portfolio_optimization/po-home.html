@@ -16,7 +16,28 @@
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   </head>
   <body>
-    <h1>Homepage</h1>
+    <h1>Portfolio Optimization</h1>
+    <div>
+      <h3>Instructions:</h3>
+      <ol>
+        <li>Use the search bar to specify the stocks you want in your portfolio, selecting between 3 to 10 stocks from the S&P500 or the Chilean IPSA index.</li>
+        <li>Define a date range for historical prices, ensuring it spans at least one year. The start-date must be after the year 2000, and the end-date should not exceed today's date.</li>
+        <li>Press the "Run Calculations" button to initiate the analysis.</li>
+        <li>Upon completion, review the following outputs:
+          <ul>
+            <li>The correlation matrix displaying the relationships between selected stocks.</li>
+            <li>The efficient frontier graph, highlighting two critical points:
+              <ul>
+                <li>A red star indicating the Minimum Volatility Portfolio.</li>
+                <li>A green star representing the Optimal Risky Portfolio, identified by the highest Sharpe ratio.</li>
+              </ul>
+            </li>
+            <li>Two donut charts illustrating the weight allocations for both the Minimum Volatility and Optimal Risky portfolios.</li>
+          </ul>
+        </li>
+      </ol>
+
+    </div>
 
     <section>{% include "partials/search.html" %}</section>
 
