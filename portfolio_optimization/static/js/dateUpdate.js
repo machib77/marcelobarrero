@@ -2,16 +2,15 @@
 
 document.getElementById('start_date').addEventListener('change', function () {
   updateDateRange();
+  logChanges();
 });
 
 document.getElementById('end_date').addEventListener('change', function () {
   updateDateRange();
+  logChanges();
 });
 
 function updateDateRange() {
-  let runCalculationsBtn = document.getElementById('run-calculations-btn');
-  let selectedTickersDiv = document.getElementById('selected-tickers');
-
   let startDate = document.getElementById('start_date').value;
   let endDate = document.getElementById('end_date').value;
 
@@ -33,41 +32,31 @@ function updateDateRange() {
     headers: {
       'X-CSRFToken': csrfToken,
     },
-  }).then(html => {
-    let selectedTickers = selectedTickersDiv.querySelectorAll('.ticker-item');
-    console.log(`Number of selected tickers: ${selectedTickers.length}`);
-    console.log(`Start: ${startDate}; End: ${endDate}`);
-    checkButtonState(runCalculationsBtn, selectedTickers, endDate, startDate);
   });
-}
-
-function checkButtonState(
-  runCalculationsBtn,
-  selectedTickers,
-  endDate,
-  startDate
-) {
-  if (selectedTickers.length >= 3 && endDate > startDate) {
-    runCalculationsBtn.disabled = false;
-  } else {
-    runCalculationsBtn.disabled = true;
-  }
 }
 
 // Create a new MutationObserver instance
-const observer = new MutationObserver(mutations => {
-  mutations.forEach(mutation => {
-    if (mutation.type === 'childList') {
-      const selectedTickers = document.querySelectorAll(
-        '#selected-tickers .ticker-item'
-      );
-      console.log(
-        `Number of selected tickers after the "Add" button click: ${selectedTickers.length}`
-      );
-    }
-  });
+const observer = new MutationObserver(() => {
+  logChanges();
 });
 
 // Observe changes to the 'selected-tickers' div
 const selectedTickersDiv = document.getElementById('selected-tickers');
-observer.observe(selectedTickersDiv, { childList: true });
+observer.observe(selectedTickersDiv, { childList: true, subtree: true });
+
+const startDateInput = document.getElementById('start_date');
+startDateInput.addEventListener('input', logChanges);
+
+const endDateInput = document.getElementById('end_date');
+endDateInput.addEventListener('input', logChanges);
+
+function logChanges() {
+  const startDate = new Date(startDateInput.value);
+  const endDate = new Date(endDateInput.value);
+  const selectedTickers = document.querySelectorAll(
+    '#selected-tickers .ticker-item'
+  ).length;
+  console.log(
+    `startDate: ${startDate}, endDate: ${endDate}, selectedTickers: ${selectedTickers}`
+  );
+}
