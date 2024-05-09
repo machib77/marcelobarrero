@@ -59,4 +59,29 @@ function logChanges() {
   console.log(
     `startDate: ${startDate}, endDate: ${endDate}, selectedTickers: ${selectedTickers}`
   );
+  let runCalculationsBtn = document.getElementById('run-calculations-btn');
+
+  // Get the current date
+  const today = new Date();
+
+  // Check if the years of startDate and endDate are greater than 2000
+  const startDateYear = startDate.getFullYear();
+  const endDateYear = endDate.getFullYear();
+
+  // Calculate the difference in days between startDate and endDate
+  const diffInDays = Math.abs((endDate - startDate) / (1000 * 60 * 60 * 24));
+
+  if (
+    selectedTickers >= 2 &&
+    endDate > startDate &&
+    startDateYear >= 2000 &&
+    endDateYear >= 2000 &&
+    startDate <= today &&
+    endDate <= today &&
+    diffInDays >= 360
+  ) {
+    runCalculationsBtn.disabled = false;
+  } else {
+    runCalculationsBtn.disabled = true;
+  }
 }
