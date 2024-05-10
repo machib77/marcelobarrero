@@ -1,4 +1,4 @@
-<div>
+<div id="search-bar-container">
   {% csrf_token %}
   <input
     type="text"
@@ -6,7 +6,7 @@
     hx-target="#results"
     hx-trigger="keyup changed delay:500ms"
     name="search"
-    placeholder="Search tickers..."
+    placeholder="&#128269; Search tickers..."
     hx-headers="{ 'X-CSRFToken': '{{ csrf_token }}' }"
   />
 </div>

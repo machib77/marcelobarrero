@@ -64,6 +64,43 @@ body {
   padding: 1em; /* Add padding for better spacing */
 }
 
+ol li::marker {
+  color: #f83884; /* Change the color of the numbers in ordered lists */
+}
+
+ul {
+  list-style-type: square; /* Use square as the marker for unordered lists */
+}
+
+ul li::marker {
+  color: #8779e2; /* Change the color of the bullets in unordered lists */
+}
+
+.red-star::marker {
+  content: '★'; /* Unicode character for a star */
+  color: red;
+}
+
+.green-star::marker {
+  content: '★'; /* Unicode character for a star */
+  color: green;
+}
+
+#search-bar-container {
+  text-align: center;
+  padding: 1em;
+}
+
+#search-bar-container input[type='text'] {
+  width: 100%;
+  height: 4em;
+  border-radius: 0.5em;
+  background-color: #1a1b20;
+  color: white;
+  font-size: 1em;
+  text-indent: 30px;
+}
+
 @media screen and (min-width: 768px) {
   #instructions {
     margin: 0 auto;
@@ -71,5 +108,9 @@ body {
   .gradient-container {
     margin: 0 auto;
     max-width: 50%;
+  }
+
+  #search-bar-container input[type='text'] {
+    width: 51%;
   }
 }
