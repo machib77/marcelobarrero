@@ -23,11 +23,24 @@ body {
   text-align: center;
 }
 
-#instructions {
-  background-color: #1a1b20;
-  margin: 1em;
-  overflow: hidden;
+.gradient-container {
+  background: linear-gradient(to right, #e4d195, #ffc4da, #f83884, #8779e2);
   border-radius: 1em;
+  padding: 0.2em; /* Adjust this value to control the size of the gradient border */
+  margin: 1em;
+}
+
+#box-border {
+  background-color: #1a1b20;
+  border-radius: 1em;
+  overflow: hidden;
+}
+
+#instructions {
+  background-color: #1a1b20; /* Inherit the background color from #box-border */
+  border-radius: 1em; /* Inherit the border-radius from #box-border */
+  margin: 0;
+  overflow: hidden;
 }
 
 #home-title-h1 {
@@ -43,10 +56,19 @@ body {
   padding: 0.1em;
   text-align: center;
   color: #8779e2;
+  border-top-left-radius: 1em;
+  border-top-right-radius: 1em;
+}
+
+#instructions-inner-content {
+  padding: 1em; /* Add padding for better spacing */
 }
 
 @media screen and (min-width: 768px) {
   #instructions {
+    margin: 0 auto;
+  }
+  .gradient-container {
     margin: 0 auto;
     max-width: 50%;
   }
