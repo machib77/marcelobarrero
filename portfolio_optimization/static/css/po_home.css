@@ -1,0 +1,53 @@
+body,
+html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  color: white;
+  font-family: 'Open Sans', sans-serif;
+}
+
+body {
+  background: black;
+}
+
+.open-sans {
+  font-family: 'Open Sans', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400; /* You can replace this with your desired weight */
+  font-style: normal;
+  font-variation-settings: 'wdth' 100;
+}
+
+#home-title {
+  text-align: center;
+}
+
+#instructions {
+  background-color: #1a1b20;
+  margin: 1em;
+  overflow: hidden;
+  border-radius: 1em;
+}
+
+#home-title-h1 {
+  background: linear-gradient(to right, #e4d195, #ffc4da, #f83884, #8779e2);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+}
+
+#instructions-title {
+  background-color: #333333;
+  padding: 0.1em;
+  text-align: center;
+  color: #8779e2;
+}
+
+@media screen and (min-width: 768px) {
+  #instructions {
+    margin: 0 auto;
+    max-width: 50%;
+  }
+}
