@@ -1,18 +1,22 @@
 {% if results %}
-<ul>
-  {% for ticker in results %}
-  <li>
-    [{{ticker.index}}] {{ ticker.symbol }}: {{ ticker.company_name}}
-    <a
-      class="add-ticker-btn"
-      href="{% url 'add-ticker' %}?ticker_id={{ ticker.id }}"
-      hx-get="{% url 'add-ticker' %}?ticker_id={{ ticker.id }}"
-      hx-target="#selected-tickers"
-      hx-vals="{'ticker_id': '{{ ticker.id }}'}"
-      hx-headers="{ 'X-CSRFToken': '{{ csrf_token }}'}"
-      >Add</a
-    >
-  </li>
-  {% endfor %}
-</ul>
+<div id="search-result-container">
+  <ul>
+    {% for ticker in results %}
+    <li>
+      <!-- prettier-ignore -->
+      <span id="flag-span">{% if ticker.index == 'S&P' %}🇺🇸{% elif ticker.index == 'IPSA' %}🇨🇱{% else %}[{{ticker.index}}]{% endif %}</span>
+      {{ ticker.symbol }}: {{ ticker.company_name}}
+      <a
+        class="add-ticker-btn"
+        href="{% url 'add-ticker' %}?ticker_id={{ ticker.id }}"
+        hx-get="{% url 'add-ticker' %}?ticker_id={{ ticker.id }}"
+        hx-target="#selected-tickers"
+        hx-vals="{'ticker_id': '{{ ticker.id }}'}"
+        hx-headers="{ 'X-CSRFToken': '{{ csrf_token }}'}"
+        >Add</a
+      >
+    </li>
+    {% endfor %}
+  </ul>
+</div>
 {% endif %}

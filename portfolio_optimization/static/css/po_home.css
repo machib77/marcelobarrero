@@ -19,6 +19,12 @@ body {
   font-variation-settings: 'wdth' 100;
 }
 
+@font-face {
+  font-family: NotoColorEmojiLimited;
+  unicode-range: U+1F1E6-1F1FF;
+  src: url('/static/fonts/NotoColorEmoji.ttf') format('truetype');
+}
+
 #home-title {
   text-align: center;
 }
@@ -68,7 +74,7 @@ ol li::marker {
   color: #f83884; /* Change the color of the numbers in ordered lists */
 }
 
-ul {
+#instructions ul {
   list-style-type: square; /* Use square as the marker for unordered lists */
 }
 
@@ -101,6 +107,23 @@ ul li::marker {
   text-indent: 30px;
 }
 
+#search-result-container {
+  background-color: #1a1b20;
+  border-radius: 1em;
+  margin: 1em;
+  padding: 1em;
+}
+
+#search-result-container ul {
+  list-style-type: none;
+}
+
+#flag-span {
+  font-family: 'NotoColorEmojiLimited', -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol';
+}
+
 @media screen and (min-width: 768px) {
   #instructions {
     margin: 0 auto;
@@ -112,5 +135,10 @@ ul li::marker {
 
   #search-bar-container input[type='text'] {
     width: 51%;
+  }
+
+  #search-result-container {
+    margin: 0 auto;
+    max-width: 45%;
   }
 }
