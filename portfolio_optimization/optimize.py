@@ -33,7 +33,7 @@ def efficient_frontier_plot(portfolios, min_vol_port, optimal_risky_port):
         x=[min_vol_port.iloc[1]],
         y=[min_vol_port.iloc[0]],
         mode="markers",
-        marker=dict(color="red", size=15, symbol="star"),
+        marker=dict(color="rgba(242,71,62,1)", size=15, symbol="star"),
         name="Minimum Volatility Portfolio",
     )
 
@@ -41,7 +41,7 @@ def efficient_frontier_plot(portfolios, min_vol_port, optimal_risky_port):
         x=[optimal_risky_port.iloc[1]],
         y=[optimal_risky_port.iloc[0]],
         mode="markers",
-        marker=dict(color="green", size=15, symbol="star"),
+        marker=dict(color="rgba(4,170,109,1)", size=15, symbol="star"),
         name="Optimal Risky Portfolio",
     )
 
@@ -62,7 +62,7 @@ def efficient_frontier_plot(portfolios, min_vol_port, optimal_risky_port):
             title="Volatility",
             showgrid=True,
             gridwidth=1,
-            gridcolor="LightGray",
+            gridcolor="rgba(237,231,225,0.1)",
             titlefont=dict(color="white"),  # Set the x-axis title font color to white
             tickfont=dict(color="white"),
         ),
@@ -70,7 +70,7 @@ def efficient_frontier_plot(portfolios, min_vol_port, optimal_risky_port):
             title="Returns",
             showgrid=True,
             gridwidth=1,
-            gridcolor="LightGray",
+            gridcolor="rgba(237,231,225,0.1)",
             titlefont=dict(color="white"),  # Set the x-axis title font color to white
             tickfont=dict(color="white"),
         ),

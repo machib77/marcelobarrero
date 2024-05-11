@@ -99,12 +99,12 @@ ul li::marker {
 
 .red-star::marker {
   content: '★'; /* Unicode character for a star */
-  color: red;
+  color: #f2473e;
 }
 
 .green-star::marker {
   content: '★'; /* Unicode character for a star */
-  color: green;
+  color: #04aa6d;
 }
 
 #search-bar-container {
@@ -230,6 +230,7 @@ ul li::marker {
 
 #correlation-matrix-container {
   text-align: center;
+  margin-bottom: 2em;
 }
 
 .table-wrapper {
