@@ -12,30 +12,62 @@ from matplotlib.patches import Circle
 
 import plotly.express as px
 import plotly.offline as pyo
+import plotly.graph_objects as go
 
 
 def efficient_frontier_plot(portfolios, min_vol_port, optimal_risky_port):
     # Hago el plot de la frontera eficiente
-    fig, ax = plt.subplots()
-    scatter = ax.scatter(
-        portfolios["Volatility"], portfolios["Returns"], marker="o", s=10, alpha=0.3
-    )
-    ax.grid(True, alpha=0.5, linestyle="--")
-    ax.set_xlabel("Volatility")
-    ax.set_ylabel("Returns")
-    ax.set_title("Portfolio Returns vs. Volatility")
 
-    # Plot de los puntos para portfolio de varianza mínima y el óptimo
-    ax.scatter(min_vol_port.iloc[1], min_vol_port.iloc[0], color="r", marker="*", s=500)
-    ax.scatter(
-        optimal_risky_port.iloc[1],
-        optimal_risky_port.iloc[0],
-        color="g",
-        marker="*",
-        s=500,
+    fig = go.Figure()
+
+    scatter_trace = go.Scatter(
+        x=portfolios["Volatility"],
+        y=portfolios["Returns"],
+        mode="markers",
+        marker=dict(color="blue"),
+        name="Efficient Frontier",
+    )
+    fig.add_trace(scatter_trace)
+
+    min_vol_port_trace = go.Scatter(
+        x=[min_vol_port.iloc[1]],
+        y=[min_vol_port.iloc[0]],
+        mode="markers",
+        marker=dict(color="red", size=15, symbol="star"),
+        name="Minimum Volatility Portfolio",
     )
 
-    return fig
+    optimal_risky_port_trace = go.Scatter(
+        x=[optimal_risky_port.iloc[1]],
+        y=[optimal_risky_port.iloc[0]],
+        mode="markers",
+        marker=dict(color="green", size=15, symbol="star"),
+        name="Optimal Risky Portfolio",
+    )
+
+    fig.add_trace(min_vol_port_trace)
+    fig.add_trace(optimal_risky_port_trace)
+
+    # Update layout
+    fig.update_layout(
+        title="Portfolio Returns vs. Volatility",
+        xaxis=dict(
+            title="Volatility",
+            showgrid=True,
+            gridwidth=1,
+            gridcolor="LightGray",
+        ),
+        yaxis=dict(
+            title="Returns",
+            showgrid=True,
+            gridwidth=1,
+            gridcolor="LightGray",
+        ),
+    )
+
+    html_str = pyo.plot(fig, output_type="div", include_plotlyjs=False)
+
+    return html_str
 
 
 def donut_plot(portfolio, title):
@@ -140,11 +172,12 @@ def optimize_portfolio(ticker_list, date_list):
     rf = 0.01  # Por mientras como ejemplo
     optimal_risky_port = portfolios.iloc[((portfolios["Returns"] - rf) / portfolios["Volatility"]).idxmax()]  # type: ignore
 
-    # Hago el plot de la frontera eficiente
-    fig = efficient_frontier_plot(portfolios, min_vol_port, optimal_risky_port)
-
     corr_matrix_html = corr_matrix.to_html()
-    efficient_frontier = mpld3.fig_to_html(fig)
+
+    # Hago el plot de la frontera eficiente
+    efficient_frontier = efficient_frontier_plot(
+        portfolios, min_vol_port, optimal_risky_port
+    )
 
     # Hago un donut plot para min_vol_port y para optimal_risky_port
     fig_min = donut_plot(min_vol_port, "Min Volatility Portfolio")
