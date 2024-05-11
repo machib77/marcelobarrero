@@ -24,7 +24,7 @@ def efficient_frontier_plot(portfolios, min_vol_port, optimal_risky_port):
         x=portfolios["Volatility"],
         y=portfolios["Returns"],
         mode="markers",
-        marker=dict(color="blue", opacity=0.3),
+        marker=dict(color="rgba(228,209,149,0.5)", opacity=0.3),
         showlegend=False,
     )
     fig.add_trace(scatter_trace)
