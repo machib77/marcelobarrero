@@ -1,49 +1,48 @@
-{% comment %} {% if ticker_symbols %}
-<ul>
-  {% for symbol in ticker_symbols %}
-  <li>{{ symbol }}</li>
-  {% endfor %}
-</ul>
-{% else %}
-<p>No selected tickers.</p>
-{% endif %} {% endcomment %}
+<div class="gradient-container" id="results-container">
+  <div class="jumbotron">
+    <div class="jumbotron-title">
+      <h2>Optimization Results</h2>
+    </div>
+    <div class="jumbotron-inner-content">
+      <!-- For the correlation matrix -->
+      <div id="correlation-matrix-container">
+        <h3>Correlation Matrix</h3>
+        {% if corr_matrix_html %}
+        <div class="table-wrapper">
+          {{ corr_matrix_html | safe }}
+          <!-- Use safe filter to render HTML -->
+        </div>
+        {% else %}
+        <p>No correlation matrix available.</p>
+        {% endif %}
+      </div>
 
-<!-- For the correlation matrix -->
-<div id="correlation-matrix-container">
-  <h3>Correlation Matrix</h3>
-  {% if corr_matrix_html %}
-  <div class="table-wrapper">
-    {{ corr_matrix_html | safe }}
-    <!-- Use safe filter to render HTML -->
+      <!-- For the efficient frontier -->
+      {% if efficient_frontier %}
+      <!-- -->
+      {{ efficient_frontier | safe }}
+      <!-- -->
+      {% else %}
+      <p>No efficient frontier available</p>
+      {% endif %}
+
+      <!-- For fig_min -->
+      {% if fig_min %}
+      <!-- -->
+      {{ fig_min | safe }}
+      <!-- -->
+      {% else %}
+      <p>No summary available for min vol portfolio.</p>
+      {% endif %}
+
+      <!-- For fig_min -->
+      {% if fig_opt %}
+      <!-- -->
+      {{ fig_opt | safe }}
+      <!-- -->
+      {% else %}
+      <p>No summary available for optimal risky portfolio.</p>
+      {% endif %}
+    </div>
   </div>
-  {% else %}
-  <p>No correlation matrix available.</p>
-  {% endif %}
 </div>
-
-<!-- For the efficient frontier -->
-{% if efficient_frontier %}
-<!-- -->
-{{ efficient_frontier | safe }}
-<!-- -->
-{% else %}
-<p>No efficient frontier available</p>
-{% endif %}
-
-<!-- For fig_min -->
-{% if fig_min %}
-<!-- -->
-{{ fig_min | safe }}
-<!-- -->
-{% else %}
-<p>No summary available for min vol portfolio.</p>
-{% endif %}
-
-<!-- For fig_min -->
-{% if fig_opt %}
-<!-- -->
-{{ fig_opt | safe }}
-<!-- -->
-{% else %}
-<p>No summary available for optimal risky portfolio.</p>
-{% endif %}
