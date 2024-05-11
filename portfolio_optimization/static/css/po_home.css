@@ -238,6 +238,12 @@ ul li::marker {
   align-items: center;
 }
 
+.table-wrapper table {
+  border-collapse: collapse;
+  width: auto;
+  border: #f83884;
+}
+
 @media screen and (min-width: 768px) {
   #instructions {
     margin: 0 auto;
