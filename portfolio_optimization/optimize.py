@@ -75,12 +75,15 @@ def efficient_frontier_plot(portfolios, min_vol_port, optimal_risky_port):
             tickfont=dict(color="white"),
         ),
         legend=dict(
-            x=0.70,  # Adjust the x position of the legend
-            y=0.10,  # Adjust the y position of the legend
+            orientation="h",
+            x=0.25,  # Adjust the x position of the legend
+            y=-0.3,  # Adjust the y position of the legend
             bgcolor="rgba(255,255,255,0.5)",  # Set a semi-transparent background
         ),
         plot_bgcolor="rgba(51,51,51,0.5)",  # Set the plot background to transparent
         paper_bgcolor="rgba(0,0,0,0)",
+        autosize=True,
+        margin=dict(l=50, r=50, t=50, b=50),
     )
 
     html_str = pyo.plot(fig, output_type="div", include_plotlyjs=False)
