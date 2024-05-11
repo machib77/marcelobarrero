@@ -188,6 +188,7 @@ ul li::marker {
 
 #date-range-container {
   margin-top: 2em;
+  margin-bottom: 2em;
 }
 
 #date-inner-content {
@@ -208,9 +209,40 @@ ul li::marker {
   margin-right: 0.5em;
 }
 
+#run-calculations-btn {
+  display: block;
+  margin: 0 auto;
+  border-radius: 0.5em;
+  padding: 1em;
+  font-size: 1em;
+}
+
+#run-calculations-btn:enabled {
+  font-weight: bold;
+  background-color: white;
+  transition: background-color 0.3s ease;
+}
+
+#run-calculations-btn:enabled:hover {
+  background-color: #8779e2;
+  color: white;
+}
+
+#correlation-matrix-container {
+  text-align: center;
+}
+
+.table-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 @media screen and (min-width: 768px) {
   #instructions {
     margin: 0 auto;
+    width: 100%;
+    max-width: 800px;
   }
   .gradient-container {
     margin: 0 auto;
