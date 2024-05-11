@@ -11,6 +11,10 @@ body {
   background: black;
 }
 
+li {
+  margin-bottom: 0.5em;
+}
+
 .open-sans {
   font-family: 'Open Sans', sans-serif;
   font-optical-sizing: auto;
@@ -27,6 +31,7 @@ body {
 
 #home-title {
   text-align: center;
+  padding: 1em;
 }
 
 .gradient-container {
@@ -105,6 +110,7 @@ ul li::marker {
   color: white;
   font-size: 1em;
   text-indent: 30px;
+  margin-bottom: 0.8em;
 }
 
 #search-result-container {
@@ -112,16 +118,45 @@ ul li::marker {
   border-radius: 1em;
   margin: 1em;
   padding: 1em;
+  position: relative;
 }
 
 #search-result-container ul {
   list-style-type: none;
 }
 
+#search-result-container:after {
+  content: '';
+  position: absolute;
+  top: -15px;
+  left: 30px;
+  border-width: 0 15px 15px;
+  border-style: solid;
+  border-color: #1a1b20 transparent;
+}
+
+#search-result-container:before {
+  content: '';
+  position: absolute;
+  top: -16px;
+  left: 29px;
+  border-width: 0 16px 16px;
+  border-style: solid;
+  border-color: black transparent;
+}
+
 #flag-span {
   font-family: 'NotoColorEmojiLimited', -apple-system, BlinkMacSystemFont,
     'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji',
     'Segoe UI Emoji', 'Segoe UI Symbol';
+}
+
+.add-ticker-btn {
+  background-color: #04aa6d;
+  border-radius: 15%;
+  font-weight: bold;
+  font-size: 0.7em;
+  color: white;
 }
 
 @media screen and (min-width: 768px) {

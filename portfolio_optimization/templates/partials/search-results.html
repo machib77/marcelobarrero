@@ -6,15 +6,16 @@
       <!-- prettier-ignore -->
       <span id="flag-span">{% if ticker.index == 'S&P' %}🇺🇸{% elif ticker.index == 'IPSA' %}🇨🇱{% else %}[{{ticker.index}}]{% endif %}</span>
       {{ ticker.symbol }}: {{ ticker.company_name}}
-      <a
+      <button
         class="add-ticker-btn"
         href="{% url 'add-ticker' %}?ticker_id={{ ticker.id }}"
         hx-get="{% url 'add-ticker' %}?ticker_id={{ ticker.id }}"
         hx-target="#selected-tickers"
         hx-vals="{'ticker_id': '{{ ticker.id }}'}"
         hx-headers="{ 'X-CSRFToken': '{{ csrf_token }}'}"
-        >Add</a
       >
+        Add
+      </button>
     </li>
     {% endfor %}
   </ul>
