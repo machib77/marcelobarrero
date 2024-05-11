@@ -186,6 +186,10 @@ ul li::marker {
   margin-bottom: 0.5em;
 }
 
+#date-range-container {
+  margin-top: 2em;
+}
+
 @media screen and (min-width: 768px) {
   #instructions {
     margin: 0 auto;
