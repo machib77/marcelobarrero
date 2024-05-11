@@ -24,8 +24,8 @@ def efficient_frontier_plot(portfolios, min_vol_port, optimal_risky_port):
         x=portfolios["Volatility"],
         y=portfolios["Returns"],
         mode="markers",
-        marker=dict(color="blue"),
-        name="Efficient Frontier",
+        marker=dict(color="blue", opacity=0.3),
+        showlegend=False,
     )
     fig.add_trace(scatter_trace)
 
@@ -50,19 +50,37 @@ def efficient_frontier_plot(portfolios, min_vol_port, optimal_risky_port):
 
     # Update layout
     fig.update_layout(
-        title="Portfolio Returns vs. Volatility",
+        title=dict(
+            text="Portfolio Returns vs. Volatility",
+            x=0.5,  # Center the title horizontally
+            y=0.95,  # Adjust the vertical position of the title
+            font=dict(
+                color="white", size=18, family="Arial Black"
+            ),  # Set font color, size, and family
+        ),
         xaxis=dict(
             title="Volatility",
             showgrid=True,
             gridwidth=1,
             gridcolor="LightGray",
+            titlefont=dict(color="white"),  # Set the x-axis title font color to white
+            tickfont=dict(color="white"),
         ),
         yaxis=dict(
             title="Returns",
             showgrid=True,
             gridwidth=1,
             gridcolor="LightGray",
+            titlefont=dict(color="white"),  # Set the x-axis title font color to white
+            tickfont=dict(color="white"),
         ),
+        legend=dict(
+            x=0.70,  # Adjust the x position of the legend
+            y=0.10,  # Adjust the y position of the legend
+            bgcolor="rgba(255,255,255,0.5)",  # Set a semi-transparent background
+        ),
+        plot_bgcolor="rgba(51,51,51,0.5)",  # Set the plot background to transparent
+        paper_bgcolor="rgba(0,0,0,0)",
     )
 
     html_str = pyo.plot(fig, output_type="div", include_plotlyjs=False)
