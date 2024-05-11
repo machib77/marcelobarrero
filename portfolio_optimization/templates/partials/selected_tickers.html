@@ -4,19 +4,22 @@
 {% endfor %}
 
 <!-- show selected tickers -->
-{% for selected_ticker in selected_tickers %}
-<div class="ticker-item">
-  <!-- prettier-ignore -->
-  {{ selected_ticker.ticker.symbol }} - {{ selected_ticker.ticker.company_name}}
-  <a 
-  class="remove-btn"
-  href="{% url "remove-ticker" %}?ticker_id={{ selected_ticker.id }}"
-  hx-get="{% url "remove-ticker" %}?ticker_id={{ selected_ticker.id }}"
-  hx-target="#selected-tickers"
-  hx-vals="{'ticker_id': '{{ selected_ticker.id }}'}"
-  hx-headers="{ 'X-CSRFToken': '{{ csrf_token }}'}"
-  >Remove</a>
+<div id="selected-tickers-container">
+  {% for selected_ticker in selected_tickers %}
+  <div class="ticker-item">
+    <!-- prettier-ignore -->
+    <span id="flag-span">{% if selected_ticker.ticker.index == 'S&P' %}🇺🇸{% elif selected_ticker.ticker.index == 'IPSA' %}🇨🇱{% else %}[{{selected_ticker.ticker.index}}]{% endif %}</span>
+    {{ selected_ticker.ticker.symbol }}: {{ selected_ticker.ticker.company_name}}
+    <button 
+    class="remove-btn"
+    href="{% url "remove-ticker" %}?ticker_id={{ selected_ticker.id }}"
+    hx-get="{% url "remove-ticker" %}?ticker_id={{ selected_ticker.id }}"
+    hx-target="#selected-tickers"
+    hx-vals="{'ticker_id': '{{ selected_ticker.id }}'}"
+    hx-headers="{ 'X-CSRFToken': '{{ csrf_token }}'}"
+    >X</button>
+  </div>
+  {% empty %}
+  <p>You haven't selected any tickers yet.</p>
+  {% endfor %}
 </div>
-{% empty %}
-<p>You haven't selected any tickers yet.</p>
-{% endfor %}

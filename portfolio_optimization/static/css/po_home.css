@@ -34,26 +34,6 @@ li {
   padding: 1em;
 }
 
-.gradient-container {
-  background: linear-gradient(to right, #e4d195, #ffc4da, #f83884, #8779e2);
-  border-radius: 1em;
-  padding: 0.2em; /* Adjust this value to control the size of the gradient border */
-  margin: 1em;
-}
-
-#box-border {
-  background-color: #1a1b20;
-  border-radius: 1em;
-  overflow: hidden;
-}
-
-#instructions {
-  background-color: #1a1b20; /* Inherit the background color from #box-border */
-  border-radius: 1em; /* Inherit the border-radius from #box-border */
-  margin: 0;
-  overflow: hidden;
-}
-
 #home-title-h1 {
   background: linear-gradient(to right, #e4d195, #ffc4da, #f83884, #8779e2);
   -webkit-background-clip: text;
@@ -62,7 +42,21 @@ li {
   font-weight: bold;
 }
 
-#instructions-title {
+.gradient-container {
+  background: linear-gradient(to right, #e4d195, #ffc4da, #f83884, #8779e2);
+  border-radius: 1em;
+  padding: 0.2em; /* Adjust this value to control the size of the gradient border */
+  margin: 1em;
+}
+
+.jumbotron {
+  background-color: #1a1b20; /* Inherit the background color from #box-border */
+  border-radius: 1em; /* Inherit the border-radius from #box-border */
+  margin: 0;
+  overflow: hidden;
+}
+
+.jumbotron-title {
   background-color: #333333;
   padding: 0.1em;
   text-align: center;
@@ -71,7 +65,23 @@ li {
   border-top-right-radius: 1em;
 }
 
-#instructions-inner-content {
+#my-portfolio-jumbotron-title {
+  background: linear-gradient(to right, #e4d195, #ffc4da, #f83884, #8779e2);
+}
+
+#my-portfolio-title {
+  color: #1a1b20;
+}
+
+#my-portfolio-inner-content {
+  padding: 0%;
+}
+
+#selected-tickers-container {
+  padding: 1em;
+}
+
+.jumbotron-inner-content {
   padding: 1em; /* Add padding for better spacing */
 }
 
@@ -100,6 +110,7 @@ ul li::marker {
 #search-bar-container {
   text-align: center;
   padding: 1em;
+  padding-top: 2em;
 }
 
 #search-bar-container input[type='text'] {
@@ -119,6 +130,10 @@ ul li::marker {
   margin: 1em;
   padding: 1em;
   position: relative;
+}
+
+#results {
+  margin-bottom: 2em;
 }
 
 #search-result-container ul {
@@ -157,6 +172,18 @@ ul li::marker {
   font-weight: bold;
   font-size: 0.7em;
   color: white;
+}
+
+.remove-btn {
+  background-color: #f44336;
+  border-radius: 15%;
+  font-weight: bolder;
+  font-size: 0.7em;
+  color: white;
+}
+
+.ticker-item {
+  margin-bottom: 0.5em;
 }
 
 @media screen and (min-width: 768px) {
