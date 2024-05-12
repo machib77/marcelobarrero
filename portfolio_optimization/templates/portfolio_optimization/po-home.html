@@ -84,6 +84,12 @@
       <div id="calculation-results"></div>
     </section>
 
+    <footer>
+      <p id="footer">
+          © 2024 <a href="{% url "home" %}">Marcelo Barrero</a>. All rights reserved.
+      </p>
+    </footer>
+
     <script>
         document.body.addEventListener('htmx:configRequest', event => {
             event.detail.headers['X-CSRFToken'] = '{{ csrf_token }}';

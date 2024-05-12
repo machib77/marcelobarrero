@@ -257,6 +257,14 @@ ul li::marker {
   margin-bottom: 2em;
 }
 
+#footer {
+  text-align: center;
+}
+
+#footer a {
+  color: #e4d195;
+}
+
 @media screen and (min-width: 768px) {
   #instructions {
     margin: 0 auto;
