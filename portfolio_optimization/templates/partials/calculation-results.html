@@ -3,7 +3,7 @@
     <div class="jumbotron-title">
       <h2>Optimization Results</h2>
     </div>
-    <div class="jumbotron-inner-content">
+    <div class="jumbotron-inner-content" id="results-inner-content">
       <!-- For the correlation matrix -->
       <div id="correlation-matrix-container">
         <h3>Correlation Matrix</h3>
@@ -18,13 +18,15 @@
       </div>
 
       <!-- For the efficient frontier -->
-      {% if efficient_frontier %}
-      <!-- -->
-      {{ efficient_frontier | safe }}
-      <!-- -->
-      {% else %}
-      <p>No efficient frontier available</p>
-      {% endif %}
+      <div id="efficient-frontier-container">
+        {% if efficient_frontier %}
+        <!-- -->
+        {{ efficient_frontier | safe }}
+        <!-- -->
+        {% else %}
+        <p>No efficient frontier available</p>
+        {% endif %}
+      </div>
 
       <!-- For fig_min -->
       {% if fig_min %}

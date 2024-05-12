@@ -77,7 +77,7 @@ def efficient_frontier_plot(portfolios, min_vol_port, optimal_risky_port):
         legend=dict(
             orientation="h",
             x=0.25,  # Adjust the x position of the legend
-            y=-0.2,  # Adjust the y position of the legend
+            y=-0.15,  # Adjust the y position of the legend
             bgcolor="rgba(255,255,255,0.5)",  # Set a semi-transparent background
         ),
         plot_bgcolor="rgba(51,51,51,0.5)",  # Set the plot background to transparent
