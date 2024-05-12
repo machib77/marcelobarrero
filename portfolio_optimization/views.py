@@ -7,6 +7,7 @@ from django.http import HttpResponse
 from portfolio_optimization.optimize import optimize_portfolio
 from django.contrib import messages
 from django.shortcuts import get_object_or_404
+from django.utils.safestring import mark_safe
 
 
 # Create your views here.
@@ -93,15 +94,22 @@ def run_calculations(request):
         ticker_symbols = [ticker.ticker.symbol for ticker in selected_tickers]
         print(date_list)
         print(ticker_symbols)
-        corr_matrix, efficient_frontier, fig_min, fig_opt = optimize_portfolio(
-            ticker_symbols, date_list
-        )
 
-        context = {
-            "ticker_symbols": ticker_symbols,
-            "corr_matrix_html": corr_matrix,
-            "efficient_frontier": efficient_frontier,
-            "fig_min": fig_min,
-            "fig_opt": fig_opt,
-        }
+        try:
+            corr_matrix, efficient_frontier, fig_min, fig_opt = optimize_portfolio(
+                ticker_symbols, date_list
+            )
+
+            context = {
+                "ticker_symbols": ticker_symbols,
+                "corr_matrix_html": corr_matrix,
+                "efficient_frontier": efficient_frontier,
+                "fig_min": fig_min,
+                "fig_opt": fig_opt,
+            }
+        except Exception as e:
+            error_message = mark_safe(
+                "Something went wrong, please select other tickers or <a href='mailto:marcelo.barrero@live.com'>notify the creator of this app</a>."
+            )
+            context = {"error_message": error_message}  # Antes: str(e)
         return render(request, "partials/calculation-results.html", context)

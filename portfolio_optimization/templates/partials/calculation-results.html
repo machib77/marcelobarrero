@@ -1,3 +1,8 @@
+{% if error_message %}
+<div class="error-message">
+  <p>{{ error_message }}</p>
+</div>
+{% else %}
 <div class="gradient-container" id="results-container">
   <div class="jumbotron">
     <div class="jumbotron-title">
@@ -48,3 +53,4 @@
     </div>
   </div>
 </div>
+{% endif %}
