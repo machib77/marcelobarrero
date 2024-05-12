@@ -234,9 +234,11 @@ ul li::marker {
 }
 
 .table-wrapper {
+  padding: 1em;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: left;
+  align-items: left;
+  overflow: auto;
 }
 
 .table-wrapper table {
