@@ -94,7 +94,7 @@ def efficient_frontier_plot(portfolios, min_vol_port, optimal_risky_port):
 
 def donut_plot(portfolio, title):
     portfolio_filtered = portfolio.drop(["Returns", "Volatility"], axis="index")
-    subtitle = f"Expected Return: {portfolio.Returns*100:.1f}%, Volatility: {portfolio.Volatility*100:.1f}%"
+    subtitle = f"Exp. Return: {portfolio.Returns*100:.1f}%, Volatility: {portfolio.Volatility*100:.1f}%"
     labels = portfolio_filtered.index
     values = portfolio_filtered.values
 
@@ -131,8 +131,8 @@ def donut_plot(portfolio, title):
                 showarrow=False,
                 xref="paper",
                 yref="paper",
-                x=0.5,
-                y=1.2,
+                x=0.57,
+                y=1.08,
                 xanchor="center",
                 yanchor="top",
                 font={"color": "white"},
@@ -140,7 +140,17 @@ def donut_plot(portfolio, title):
         ],
         plot_bgcolor="rgba(51,51,51,0.5)",
         paper_bgcolor="rgba(0,0,0,0)",
-        legend=dict(font=dict(color="white")),
+        autosize=True,
+        margin=dict(l=10, r=10, t=70, b=50),
+        legend=dict(
+            font=dict(color="white", size=10),
+            orientation="v",
+            yanchor="auto",
+            traceorder="normal",
+            itemsizing="trace",
+            x=1.1,
+            y=0.5,
+        ),
     )
 
     html_str = pyo.plot(fig, output_type="div", include_plotlyjs=False)
@@ -211,7 +221,7 @@ def optimize_portfolio(ticker_list, date_list):
     )
 
     # Hago un donut plot para min_vol_port y para optimal_risky_port
-    fig_min = donut_plot(min_vol_port, "Min Volatility Portfolio")
+    fig_min = donut_plot(min_vol_port, "Min. Volatility Portfolio")
     fig_opt = donut_plot(optimal_risky_port, "Optimal Risky Portfolio")
 
     return corr_matrix_html, efficient_frontier, fig_min, fig_opt
