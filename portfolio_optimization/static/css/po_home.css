@@ -290,6 +290,17 @@ td:first-child {
   color: #e4d195;
 }
 
+#progress-indicator {
+  color: white;
+  font-weight: bold;
+  margin-top: 10px;
+  text-align: center;
+}
+
+#progress-indicator.htmx-indicator {
+  display: block;
+}
+
 @media screen and (min-width: 768px) {
   #instructions {
     margin: 0 auto;

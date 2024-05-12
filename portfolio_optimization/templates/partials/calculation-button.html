@@ -3,5 +3,9 @@
          hx-post="{% url "run-calculations" %}"
          hx-target="#calculation-results"
          hx-swap="outerHTML"
+         hx-indicator="#progress-indicator"
         >Run Calculations</button>
+    <div id="progress-indicator" style="display: none;">
+        In progress...
+    </div>
 </div>

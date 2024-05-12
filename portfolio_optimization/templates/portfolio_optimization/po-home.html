@@ -70,14 +70,31 @@
     <section>{% include "partials/date-inputs.html" %}</section>
 
     <section>
-        <button
-         id="run-calculations-btn"
-         hx-post="{% url "run-calculations" %}"
-         hx-target="#calculation-results"
-         hx-swap="outerHTML"
-         disabled
-        >Optimize My Portfolio!</button>
+      <button
+        id="run-calculations-btn"
+        hx-post="{% url "run-calculations" %}"
+        hx-target="#calculation-results"
+        hx-swap="outerHTML"
+        onclick="showProgressIndicator()"
+        disabled
+      >Optimize My Portfolio!
+      </button>
+      <div id="progress-indicator" style="display: none;">In progress...</div>
+      <script>
+        function showProgressIndicator() {
+          const progressIndicator = document.getElementById('progress-indicator');
+          progressIndicator.style.display = 'block';
+        }
 
+        function hideProgressIndicator() {
+          const progressIndicator = document.getElementById('progress-indicator');
+          progressIndicator.style.display = 'none';
+        }
+        document.addEventListener('htmx:afterSwap', function() {
+          hideProgressIndicator();
+        });
+      </script>
+      
     </section>
 
     <section>
