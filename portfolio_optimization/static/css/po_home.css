@@ -172,6 +172,7 @@ ul li::marker {
   font-weight: bold;
   font-size: 0.7em;
   color: white;
+  cursor: pointer;
 }
 
 .remove-btn {
@@ -180,6 +181,7 @@ ul li::marker {
   font-weight: bolder;
   font-size: 0.7em;
   color: white;
+  cursor: pointer;
 }
 
 .ticker-item {
@@ -226,6 +228,7 @@ ul li::marker {
 #run-calculations-btn:enabled:hover {
   background-color: #8779e2;
   color: white;
+  cursor: pointer;
 }
 
 #correlation-matrix-container {
