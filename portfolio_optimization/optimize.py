@@ -108,7 +108,11 @@ def donut_plot(portfolio, title):
         hole=0.3,
     )
 
-    fig.update_traces(hovertemplate=hover_template, values=[x * 100 for x in values])
+    fig.update_traces(
+        hovertemplate=hover_template,
+        values=[x * 100 for x in values],
+        textfont_color="white",
+    )
 
     fig.update_layout(
         title={
@@ -117,6 +121,7 @@ def donut_plot(portfolio, title):
             "x": 0.5,
             "xanchor": "center",
             "yanchor": "top",
+            "font": {"color": "white", "family": "Arial Black"},
         },
         title_font_size=20,
         font_size=14,
@@ -130,8 +135,12 @@ def donut_plot(portfolio, title):
                 y=1.2,
                 xanchor="center",
                 yanchor="top",
+                font={"color": "white"},
             )
         ],
+        plot_bgcolor="rgba(51,51,51,0.5)",
+        paper_bgcolor="rgba(0,0,0,0)",
+        legend=dict(font=dict(color="white")),
     )
 
     html_str = pyo.plot(fig, output_type="div", include_plotlyjs=False)
