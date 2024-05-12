@@ -301,6 +301,23 @@ td:first-child {
   display: block;
 }
 
+@keyframes loading {
+  0% {
+    content: '.';
+  }
+  33% {
+    content: '..';
+  }
+  66% {
+    content: '...';
+  }
+}
+
+#progress-indicator::after {
+  content: '.';
+  animation: loading 1s infinite;
+}
+
 @media screen and (min-width: 768px) {
   #instructions {
     margin: 0 auto;
