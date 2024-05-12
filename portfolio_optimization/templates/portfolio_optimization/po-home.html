@@ -83,7 +83,9 @@
       <script>
         function showProgressIndicator() {
           const progressIndicator = document.getElementById('progress-indicator');
+          const runCalculationsBtn = document.getElementById('run-calculations-btn');
           progressIndicator.style.display = 'block';
+          runCalculationsBtn.disabled = true;
         }
 
         function hideProgressIndicator() {
