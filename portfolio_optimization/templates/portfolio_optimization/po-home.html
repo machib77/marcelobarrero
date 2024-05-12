@@ -34,7 +34,7 @@
           <ol>
             <li>Use the search bar to specify the stocks you want in your portfolio, selecting between 3 to 10 stocks from the S&P500 or the Chilean IPSA index.</li>
             <li>Define a date range for historical prices, ensuring it spans at least one year. The start-date must be after the year 2000, and the end-date should not exceed today's date.</li>
-            <li>Press the "Run Calculations" button to initiate the analysis.</li>
+            <li>Press the "Optimize My Portfolio!" button to initiate the analysis.</li>
             <li>Upon completion, review the following outputs:
               <ul>
                 <li>The correlation matrix displaying the relationships between selected stocks.</li>
@@ -86,6 +86,7 @@
           const runCalculationsBtn = document.getElementById('run-calculations-btn');
           progressIndicator.style.display = 'block';
           runCalculationsBtn.disabled = true;
+          progressIndicator.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'nearest' });
         }
 
         function hideProgressIndicator() {
