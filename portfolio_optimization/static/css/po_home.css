@@ -247,6 +247,26 @@ ul li::marker {
   border: #f83884;
 }
 
+.table-wrapper table th:first-child,
+td:first-child {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  width: fit-content;
+  background-color: #1a1b20;
+  border-right: 1px solid #f83884;
+  border-left: 1px solid #f83884; /* Add this line */
+  border-top: 1px solid #f83884; /* Add this line */
+  border-bottom: 1px solid #f83884;
+}
+
+.table-wrapper table th td tr {
+  border-right: 1px solid #f83884;
+  border-left: 1px solid #f83884; /* Add this line */
+  border-top: 1px solid #f83884; /* Add this line */
+  border-bottom: 1px solid #f83884;
+}
+
 #results-container {
   margin-top: 2em;
 }
