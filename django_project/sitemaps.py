@@ -7,7 +7,7 @@ class StaticSitemap(Sitemap):
         return [
             "/",
             "/about/",
-            "portfolio/",
+            "/portfolio/",
             "/contact/",
             "/swap-manager/",
             "/portfolio-optimization/",
