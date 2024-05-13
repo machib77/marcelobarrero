@@ -46,6 +46,9 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    # Sitemap
+    "django.contrib.sites",
+    "django.contrib.sitemaps",
     # 3rd Party
     "crispy_forms",
     "crispy_bootstrap5",
@@ -54,6 +57,8 @@ INSTALLED_APPS = [
     "swap_manager.apps.SwapManagerConfig",
     "portfolio_optimization.apps.PortfolioOptimizationConfig",
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",

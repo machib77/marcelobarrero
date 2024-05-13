@@ -51,3 +51,7 @@ class ContactView(FormView):
         )
 
         return super().form_valid(form)
+
+
+class RobotsTxtView(TemplateView):
+    template_name = "robots.txt"
